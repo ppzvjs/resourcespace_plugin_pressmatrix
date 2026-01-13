@@ -11,12 +11,12 @@ if(!in_array($plugin_name, $plugins))
 
 $page_def = [];
 
-/*
-$page_def[] = config_add_section_header($lang['keycloak_server'],$lang['keycloak_server_description']);
+
+$page_def[] = config_add_section_header($lang['pressmatrix_header_baseconfig'],$lang['pressmatrix_header_baseconfig_description']);
 $page_def[] = config_add_text_input(
-    'keycloak_server_url',
-    $lang['keycloak_server_url']
-);*/
+    'pressmatrix_baseconfig_1080p',
+    $lang['pressmatrix_baseconfig_1080p']
+);
 
 // Do the page generation ritual -- don't change this section.
 config_gen_setup_post($page_def, $plugin_name);

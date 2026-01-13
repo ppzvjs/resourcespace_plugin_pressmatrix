@@ -1,7 +1,7 @@
 name: pressmatrix
 title: Pressmatrix Service
 desc: "Feed Generator for Pressmatrix"
-icon: fa fa-key
+icon: fa fa-exchange
 author: Jan Sulzberger
 version: 1.0.0
 config_url: /plugins/pressmatrix/pages/setup.php

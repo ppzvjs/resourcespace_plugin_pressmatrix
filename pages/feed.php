@@ -1,7 +1,14 @@
 <?php
+use model\FeedModel;
+use model\VideoModel;
+
 include '../../../include/db.php';
 include_once '../../../include/search_functions.php';
 include_once '../../../include/node_functions.php';
+
+// Assuming the model files are in the same directory or you have an autoloader
+require_once '../model/FeedModel.php';
+require_once '../model/VideoModel.php';
 
 if(!array_key_exists('name', $_GET)){
     die('parameter name missing');
@@ -9,59 +16,72 @@ if(!array_key_exists('name', $_GET)){
 
 $config = get_plugin_config('pressmatrix');
 $feedname = $_GET['name'];
-$today_ts = strtotime(date('Y-m-d'));
+$today_ts = strtotime(date('Y-m-d 23:59:59')); // End of today
 
-// 1. Get Node IDs
+// 1. Setup Feed Metadata
+$feed = new FeedModel();
+$feed->setTitle("Pressmatrix Feed: " . strtoupper($feedname));
+$feed->setLink("https://paulparey.de");
+$feed->setFeedlink((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+$feed->setDescription("Video feed for " . $feedname);
+$feed->setBuildDate(new \DateTime());
+$feed->setImageUrl("https://www.paulparey.de/wp-content/uploads/2018/07/header-logo.jpg"); // Set your logo
+$feed->setImageTitle("Paul Parey");
+$feed->setImageWidth(144);
+$feed->setImageHeight(144);
+
+// 2. Fetch Resources
 $active_node = get_node_id("ja", $config['pressmatrix_video_active']);
 $object_node = get_node_id(strtoupper($feedname), $config['pressmatrix_video_object']);
 
-// 2. Initial Search
-// We fetch a larger amount (e.g., 200) to make sure we find 50 that pass our filters
-$search_query = "@@" . $active_node . " @@" . $object_node;
-$results = do_search($search_query, "3", "resourceid", 0, 200, "DESC");
+// Fetch more than 50 to ensure we have enough after filtering
+$results = do_search("@@$active_node @@$object_node", "3", "resourceid", 0, 2, "DESC");
 
-$final_results = [];
+$valid_items = [];
 $date_field_id = $config['pressmatrix_video_evt'];
 $ready_field_id = $config['pressmatrix_video_ready'];
 
 if (is_array($results)) {
     foreach ($results as $resource) {
-        // A. Verify the 'Ready' field is not empty
+        // Filter A: Ready Check
         $ready_val = get_data_by_field($resource['ref'], $ready_field_id);
-        if (trim($ready_val) === "") { continue; }
+        if (trim($ready_val) === "") continue;
 
-        // B. Get Date and Verify
+        // Filter B: Date Check
         $date_val = get_data_by_field($resource['ref'], $date_field_id);
-        if (!$date_val) { continue; }
+        if (!$date_val) continue;
 
         $resource_ts = strtotime($date_val);
-        if ($resource_ts > $today_ts) { continue; }
+        if ($resource_ts > $today_ts) continue;
 
-        // Store the date inside the object so we can sort by it easily
-        $resource['sort_date'] = $resource_ts;
-        $resource['display_date'] = $date_val;
+        // 3. Map Resource to VideoModel
+        $video = new VideoModel();
+        $video->setGuid($resource['ref']);
+        $video->setTitle(get_data_by_field($resource['ref'], $config['pressmatrix_video_title']) ?: "Resource " . $resource['ref']);
+        $video->setDescription(get_data_by_field($resource['ref'], $config['pressmatrix_video_description']));
+        $video->setLink("https://paulparey.de/?r=" . $resource['ref']);
 
-        $final_results[] = $resource;
+        // Convert stored string to DateTime object
+        $video->setEvt(new \DateTime($date_val));
 
-        // Stop once we have 50 valid resources
-        if (count($final_results) >= 50) {
-            break;
-        }
+        // Image & HLS (Using your config mapping)
+        $video->setImage(get_data_by_field($resource['ref'], $config['pressmatrix_video_file']));
+        $video->setHls(get_data_by_field($resource['ref'], $config['pressmatrix_video_ready']));
+
+        $valid_items[] = $video;
+        if (count($valid_items) >= 50) break;
     }
 }
 
-// 3. Sort the final list by date DESC (Newest first)
-usort($final_results, function($a, $b) {
-    return $b['sort_date'] <=> $a['sort_date'];
+// 4. Sort Valid Items by Date DESC
+usort($valid_items, function($a, $b) {
+    return $b->getEvt()->getTimestamp() <=> $a->getEvt()->getTimestamp();
 });
 
-// 4. Final Output
-if (!empty($final_results)) {
-    echo "<h2>Showing " . count($final_results) . " Resources (Sorted by Date DESC)</h2>";
-    foreach ($final_results as $res) {
-        echo "✅ Found Resource: " . $res['ref'] . "<br>";
-        echo "Date: " . $res['display_date'] . "<br><hr>";
-    }
-} else {
-    echo "No resources found matching the criteria.";
+// 5. Build and Output Feed
+foreach ($valid_items as $item) {
+    $feed->addItem($item);
 }
+
+header('Content-Type: application/rss+xml; charset=utf-8');
+echo $feed->getFeed();

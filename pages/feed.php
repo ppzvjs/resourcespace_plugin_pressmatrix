@@ -7,7 +7,7 @@ if(!array_key_exists('name', $_GET)){
     die('parameter name missing');
 }
 
-$pagesize = (array_key_exists('pagesize',$_GET)) ? $_GET['pagesize'] : "50";
+$pagesize = (array_key_exists('pagesize',$_GET)) ? $_GET['pagesize'] : "100";
 
 $config = get_plugin_config('pressmatrix');
 $feedname = $_GET['name'];

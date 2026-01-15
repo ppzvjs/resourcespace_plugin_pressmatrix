@@ -8,6 +8,7 @@ if(!array_key_exists('name', $_GET)){
 }
 
 $config = get_plugin_config('pressmatrix');
+var_dump($config);
 $feedname = $_GET['name'];
 
 $today_ts = strtotime(date('Y-m-d')); // Get today's timestamp at midnight

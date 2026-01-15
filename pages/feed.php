@@ -7,8 +7,9 @@ if(!array_key_exists('name', $_GET)){
     die('parameter name missing');
 }
 
+$pagesize = (array_key_exists('pagesize',$_GET)) ? $_GET['pagesize'] : 100;
+
 $config = get_plugin_config('pressmatrix');
-var_dump($config);
 $feedname = $_GET['name'];
 
 $today_ts = strtotime(date('Y-m-d')); // Get today's timestamp at midnight
@@ -19,11 +20,7 @@ $object_node = get_node_id(strtoupper($feedname), $config['pressmatrix_video_obj
 
 // 2. Search ONLY for the nodes (This part is 100% working)
 $search_query = "@@" . $active_node . " @@" . $object_node;
-$results = do_search($search_query, "3", "resourceid", 0, -1, "DESC");
-global $last_search_sql; // This variable holds the final SQL query
-echo "<strong>Generated SQL:</strong> " . htmlspecialchars($last_search_sql) . "<br>";
-echo "<strong>PHP Now Variable:</strong> " . $today_ts . "<br>";
-echo "<strong>Full Search Query:</strong> " . htmlspecialchars($search_query) . "<br>";
+$results = do_search($search_query, "3", "resourceid", 0, $pagesize, "DESC");
 
 $final_results = [];
 

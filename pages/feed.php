@@ -47,8 +47,10 @@ if (is_array($results)) {
         // Filter A: Ready Check
         try {
             $ready_val = get_data_by_field(intval($resource['ref']), $ready_field_id);
+            var_dump($ready_val);
             if (trim($ready_val) === "") continue;
         }catch(Exception $e){
+            print $e->getMessage();
             var_dump($ready_field_id);
             print intval($resource['ref']);
             die();

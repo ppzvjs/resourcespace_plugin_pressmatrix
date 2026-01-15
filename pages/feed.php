@@ -7,6 +7,6 @@ $feedname = array_key_exists('name',$_GET) ? $_GET['name'] : '';
 
 $resources = get_resources();
 
-$videoModel = new \model\VideoModel();
+//$videoModel = new \model\VideoModel();
 
 print $feedname;

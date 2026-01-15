@@ -10,6 +10,8 @@ if(!array_key_exists('name', $_GET)){
 $config = get_plugin_config('pressmatrix');
 $feedname = $_GET['name'];
 
+$today_ts = strtotime(date('Y-m-d')); // Get today's timestamp at midnight
+
 // 1. Get Node IDs for the Checkbox and Object
 $active_node = get_node_id("Ja", $config['pressmatrix_video_active']);
 $object_node = get_node_id(strtoupper($feedname), $config['pressmatrix_video_object']);
@@ -17,9 +19,13 @@ $object_node = get_node_id(strtoupper($feedname), $config['pressmatrix_video_obj
 // 2. Search ONLY for the nodes (This part is 100% working)
 $search_query = "@@" . $active_node . " @@" . $object_node;
 $results = do_search($search_query, "3", "resourceid", 0, -1, "DESC");
+global $last_search_sql; // This variable holds the final SQL query
+echo "<strong>Generated SQL:</strong> " . htmlspecialchars($last_search_sql) . "<br>";
+echo "<strong>PHP Now Variable:</strong> " . $now . "<br>";
+echo "<strong>Full Search Query:</strong> " . htmlspecialchars($search_query) . "<br>";
 
 $final_results = [];
-$today_ts = strtotime(date('Y-m-d')); // Get today's timestamp at midnight
+
 $date_field_id = $config['pressmatrix_video_evt'];
 $ready_field_id = $config['pressmatrix_video_ready'];
 

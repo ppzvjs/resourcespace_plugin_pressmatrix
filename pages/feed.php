@@ -21,7 +21,7 @@ $search_query = "@@" . $active_node . " @@" . $object_node;
 $results = do_search($search_query, "3", "resourceid", 0, -1, "DESC");
 global $last_search_sql; // This variable holds the final SQL query
 echo "<strong>Generated SQL:</strong> " . htmlspecialchars($last_search_sql) . "<br>";
-echo "<strong>PHP Now Variable:</strong> " . $now . "<br>";
+echo "<strong>PHP Now Variable:</strong> " . $today_ts . "<br>";
 echo "<strong>Full Search Query:</strong> " . htmlspecialchars($search_query) . "<br>";
 
 $final_results = [];

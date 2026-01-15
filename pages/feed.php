@@ -14,7 +14,7 @@ $feedname = $_GET['name'];
 $today_ts = strtotime(date('Y-m-d')); // Get today's timestamp at midnight
 
 // 1. Get Node IDs for the Checkbox and Object
-$active_node = get_node_id("Ja", $config['pressmatrix_video_active']);
+$active_node = get_node_id("ja", $config['pressmatrix_video_active']);
 $object_node = get_node_id(strtoupper($feedname), $config['pressmatrix_video_object']);
 
 // 2. Search ONLY for the nodes (This part is 100% working)

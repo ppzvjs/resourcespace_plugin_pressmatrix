@@ -1,35 +1,63 @@
 <?php
-
-
 include '../../../include/db.php';
+include_once '../../../include/search_functions.php';
+include_once '../../../include/node_functions.php';
 
-
-if(!array_key_exists('name',$_GET)){
-    return 'parameter name missing';
+if(!array_key_exists('name', $_GET)){
+    die('parameter name missing');
 }
 
+$config = get_plugin_config('pressmatrix');
 $feedname = $_GET['name'];
-// Get the Node ID for "Ja" in Field 120
-$ja_node = get_node_id("Ja", 120);
-// Get the Node ID for "DJZ" in Field 108
-$djz_node = get_node_id(strtoupper($feedname), 108);
 
-$search_query = "@@" . $ja_node . " @@" . $djz_node . " !field130:*";
-$resource_types = "3"; // Photography only
-$order_by = "resourceid";
-$archive_state = 0; // Only active resources
-$limit = 5;
-$sort_direction = "DESC";
+// 1. Get Node IDs for the Checkbox and Object
+$active_node = get_node_id("Ja", $config['pressmatrix_video_active']);
+$object_node = get_node_id(strtoupper($feedname), $config['pressmatrix_video_object']);
 
-// Execute the search
-$results = do_search($search_query, $resource_types, $order_by, $archive_state, $limit, $sort_direction);
+// 2. Search ONLY for the nodes (This part is 100% working)
+$search_query = "@@" . $active_node . " @@" . $object_node;
+$results = do_search($search_query, "3", "resourceid", 0, -1, "DESC");
 
-// Check if we have results
-if (is_array($results) && count($results) > 0) {
+$final_results = [];
+$today_ts = strtotime(date('Y-m-d')); // Get today's timestamp at midnight
+$date_field_id = $config['pressmatrix_video_evt'];
+$ready_field_id = $config['pressmatrix_video_ready'];
+
+if (is_array($results)) {
     foreach ($results as $resource) {
-        echo "Found Resource ID: " . $resource['ref'] . "<br>";
-        echo "Title: " . $resource['field8'] . "<br>"; // field8 is usually Title
+        // A. Verify the 'Ready' field is not empty
+        $ready_val = get_data_by_field($resource['ref'], $ready_field_id);
+        if (trim($ready_val) === "") {
+            continue;
+        }
+
+        // B. Verify the 'Date' field is in the past
+        $date_val = get_data_by_field($resource['ref'], $date_field_id);
+        if (!$date_val) {
+            continue; // Skip if no date is set
+        }
+
+        $resource_ts = strtotime($date_val);
+        if ($resource_ts > $today_ts) {
+            continue; // Skip if the date is in the future
+        }
+
+        // If it passed both checks, add it to our list
+        $final_results[] = $resource;
+
+        // Stop once we hit your limit
+        if (count($final_results) >= 5) {
+            break;
+        }
+    }
+}
+
+// 3. Final Output
+if (!empty($final_results)) {
+    foreach ($final_results as $res) {
+        echo "✅ Found Resource: " . $res['ref'] . "<br>";
+        echo "Date: " . get_data_by_field($res['ref'], $date_field_id) . "<br><hr>";
     }
 } else {
-    echo "No resources found matching the criteria.";
+    echo "No resources found that are active, have data, and a date in the past.";
 }

@@ -61,6 +61,24 @@ $page_def[] = config_add_single_select(
     $metafield_options,
     true // required
 );
+$page_def[] = config_add_single_select(
+    'pressmatrix_video_object',
+    $lang['pressmatrix_video_object'],
+    $metafield_options,
+    true // required
+);
+$page_def[] = config_add_single_select(
+    'pressmatrix_video_active',
+    $lang['pressmatrix_video_active'],
+    $metafield_options,
+    true // required
+);
+$page_def[] = config_add_single_select(
+    'pressmatrix_video_ready',
+    $lang['pressmatrix_video_ready'],
+    $metafield_options,
+    true // required
+);
 
 // Do the page generation ritual -- don't change this section.
 config_gen_setup_post($page_def, $plugin_name);

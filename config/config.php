@@ -9,4 +9,8 @@ $pressmatrix_video_file = '1080p Output File';
 $pressmatrix_video_evt = 'EVT';
 $pressmatrix_video_duration = 'Duration';
 
+$pressmatrix_video_object = 'Object';
+$pressmatrix_video_active = 'Active';
+$pressmatrix_video_ready = 'Transcoding Success';
+
 $pressmatrix_feed_file = '';

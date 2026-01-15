@@ -9,3 +9,4 @@ $resources = get_resources();
 
 $videoModel = new \model\VideoModel();
 
+print $feedname;

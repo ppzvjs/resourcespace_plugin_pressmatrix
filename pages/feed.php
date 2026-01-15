@@ -44,13 +44,11 @@ $ready_field_id = $config['pressmatrix_video_ready'];
 if (is_array($results)) {
     foreach ($results as $resource) {
         // Filter A: Ready Check
-        var_dump($resource);
-        die();
-        $ready_val = get_data_by_field($resource['ref'], $ready_field_id);
+        $ready_val = get_data_by_field(intval($resource['ref']), $ready_field_id);
         if (trim($ready_val) === "") continue;
 
         // Filter B: Date Check
-        $date_val = get_data_by_field($resource['ref'], $date_field_id);
+        $date_val = get_data_by_field(intval($resource['ref']), $date_field_id);
         if (!$date_val) continue;
 
         $resource_ts = strtotime($date_val);

@@ -102,9 +102,15 @@ class VideoModel
         // Fix: Valid character in URI error
         // If $this->getHls() contains a date string instead of a URL,
         // ensure you are passing the correct field value in feed.php
-        if (!empty($this->getHls()) && strpos($this->getHls(), 'http') === 0) {
+        /*if (!empty($this->getHls()) && strpos($this->getHls(), 'http') === 0) {
             $data .= '<media:content url="' . htmlspecialchars($this->getHls()) . '" type="application/x-mpegURL" />';
-        }
+        }*/
+
+        $data .= '<media:group>';
+        $data .= '<media:content url="' . htmlspecialchars($this->getHls()) . '" type="application/x-mpegURL" medium="video" />';
+        $data .= '<media:thumbnail url="' . htmlspecialchars($this->getImage()) . '" width="1280" height="720" />';
+        $data .= '<media:title>' . htmlspecialchars($this->getTitle()) . '</media:title>';
+        $data .= '</media:group>';
 
         $data .= '</item>';
         return $data;

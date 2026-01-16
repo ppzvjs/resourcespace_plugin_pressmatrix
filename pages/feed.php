@@ -64,7 +64,7 @@ if (is_array($results)) {
 
         // 3. Map Resource to VideoModel
         $video = new VideoModel();
-        $video->setGuid($resource['ref']);
+        $video->setGuid($ref);
         $video->setTitle(get_data_by_field($resource['ref'], $config['pressmatrix_video_title']) ?: "Resource " . $resource['ref']);
         $video->setDescription(get_data_by_field($resource['ref'], $config['pressmatrix_video_description']));
         $video->setLink("https://paulparey.de/?r=" . $resource['ref']);

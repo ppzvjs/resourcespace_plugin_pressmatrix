@@ -92,13 +92,17 @@ class VideoModel
         $data .= '<description><![CDATA[' . $this->getDescription() . ']]></description>';
         $data .= '<link>' . htmlspecialchars($this->getLink()) . '</link>';
         $data .= '<pubDate>' . $this->getEvt()->format('r') . '</pubDate>';
-        $data .= '<guid isPermaLink="false">' . $this->getGuid() . '</guid>';
 
-        // 1. Use the actual resource image instead of the hardcoded logo
-        $data .= '<enclosure url="' . htmlspecialchars($this->getImage()) . '" type="image/jpeg" />';
+        // Fix: Guid uniqueness. Adding a prefix can help if IDs repeat across feeds
+        $data .= '<guid isPermaLink="false">pm-' . $this->getGuid() . '</guid>';
 
-        // 2. Add the HLS Video Stream (Pressmatrix needs this!)
-        if (!empty($this->getHls())) {
+        // Fix: Added 'length="0"' which is mandatory for RSS enclosures
+        $data .= '<enclosure url="' . htmlspecialchars($this->getImage()) . '" length="0" type="image/jpeg" />';
+
+        // Fix: Valid character in URI error
+        // If $this->getHls() contains a date string instead of a URL,
+        // ensure you are passing the correct field value in feed.php
+        if (!empty($this->getHls()) && strpos($this->getHls(), 'http') === 0) {
             $data .= '<media:content url="' . htmlspecialchars($this->getHls()) . '" type="application/x-mpegURL" />';
         }
 

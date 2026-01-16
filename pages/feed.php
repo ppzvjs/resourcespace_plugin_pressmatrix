@@ -58,7 +58,7 @@ if (is_array($results)) {
         if (!$date_val) continue;
 
         $resource_ts = strtotime($date_val);
-        if ($resource_ts > $today_ts) continue;
+        if ($resource_ts < $today_ts) continue;
 
         $img_url = get_resource_path($ref, true, 'pre', false);
 

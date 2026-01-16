@@ -35,7 +35,7 @@ $active_node = get_node_id("ja", $config['pressmatrix_video_active']);
 $object_node = get_node_id(strtoupper($feedname), $config['pressmatrix_video_object']);
 
 // Fetch more than 50 to ensure we have enough after filtering
-$results = do_search("@@$active_node @@$object_node", "3", "resourceid", 0, 2, "DESC");
+$results = do_search("@@$active_node @@$object_node", "3", "resourceid", 0, $config['pressmatrix_video_articles'], "DESC");
 
 $valid_items = [];
 $date_field_id = $config['pressmatrix_video_evt'];
@@ -43,6 +43,8 @@ $ready_field_id = $config['pressmatrix_video_ready'];
 $mediakey_field_id = $config['pressmatrix_video_mediakey'];
 
 if (is_array($results)) {
+    print count($results);
+    die();
     foreach ($results as $resource) {
         $ref = is_array($resource) ? intval($resource['ref']) : intval($resource);
 

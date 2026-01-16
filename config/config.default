@@ -17,3 +17,5 @@ $pressmatrix_feed_file = '';
 
 $pressmatrix_video_mediakey = '';
 $pressmatrix_video_hlsurl = '';
+
+$pressmatrix_video_articles = 5;

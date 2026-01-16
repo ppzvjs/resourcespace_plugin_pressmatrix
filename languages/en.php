@@ -18,3 +18,5 @@ $lang['pressmatrix_video_mediakey'] = 'Mediakey for HLS';
 $lang['pressmatrix_video_hlsurl'] = 'Base Url for HLS';
 
 $lang['pressmatrix_feed_file'] = 'Output File for for feed';
+
+$lang['pressmatrix_video_articles'] = 'Count video per feed';

@@ -89,6 +89,10 @@ $page_def[] = config_add_text_input(
     'pressmatrix_video_hlsurl',
     $lang['pressmatrix_video_hlsurl']
 );
+$page_def[] = config_add_text_input(
+    'pressmatrix_video_articles',
+    $lang['pressmatrix_video_articles']
+);
 
 
 // Do the page generation ritual -- don't change this section.

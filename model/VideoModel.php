@@ -94,7 +94,8 @@ class VideoModel
         $data .= '<link>' . $this->getLink() . '</link>';
         $data .= '<pubDate>' . $this->getEvt()->format('r') . '</pubDate>';
         $data .= '<guid>' . $this->getGuid() . '</guid>';
-        $data .= '<enclosure url="' . $this->getImage() .'"/>';
+        //$data .= '<enclosure url="' . $this->getImage() .'"/>';
+        $data .= '<addfields:image><![CDATA[<img src="https://www.paulparey.de/wp-content/uploads/2018/07/header-logo.jpg" />]]></addfields:limage>';
         $data .= '</item>';
         return $data;
     }

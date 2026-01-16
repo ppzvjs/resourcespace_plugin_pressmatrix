@@ -86,7 +86,28 @@ class VideoModel
         $this->hls = $hls;
     }
 
+    public function getEntry(){
+        $data = '<item>';
+        $data .= '<title>' . htmlspecialchars($this->getTitle()) . '</title>';
+        $data .= '<description><![CDATA[' . $this->getDescription() . ']]></description>';
+        $data .= '<link>' . htmlspecialchars($this->getLink()) . '</link>';
+        $data .= '<pubDate>' . $this->getEvt()->format('r') . '</pubDate>';
+        $data .= '<guid isPermaLink="false">' . $this->getGuid() . '</guid>';
 
+        // 1. Use the actual resource image instead of the hardcoded logo
+        $data .= '<enclosure url="' . htmlspecialchars($this->getImage()) . '" type="image/jpeg" />';
+
+        // 2. Add the HLS Video Stream (Pressmatrix needs this!)
+        if (!empty($this->getHls())) {
+            $data .= '<media:content url="' . htmlspecialchars($this->getHls()) . '" type="application/x-mpegURL" />';
+        }
+
+        $data .= '</item>';
+        return $data;
+    }
+
+
+    /*
     public function getEntry(){
         $data = '<item>';
         $data .= '<title>' . htmlspecialchars($this->getTitle()) . '</title>';
@@ -99,5 +120,5 @@ class VideoModel
         //$data .= '<addfields:image><![CDATA[<img src="https://www.paulparey.de/wp-content/uploads/2018/07/header-logo.jpg" />]]></addfields:limage>';
         $data .= '</item>';
         return $data;
-    }
+    }*/
 }

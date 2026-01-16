@@ -59,6 +59,9 @@ if (is_array($results)) {
         $resource_ts = strtotime($date_val);
         if ($resource_ts > $today_ts) continue;
 
+        $img_url = get_resource_path($ref, true, 'pre', false);
+
+
         // 3. Map Resource to VideoModel
         $video = new VideoModel();
         $video->setGuid($resource['ref']);
@@ -70,7 +73,10 @@ if (is_array($results)) {
         $video->setEvt(new \DateTime($date_val));
 
         // Image & HLS (Using your config mapping)
-        $video->setImage(get_data_by_field($resource['ref'], $config['pressmatrix_video_file']));
+        global $baseurl;
+        $urls = explode('/filestore',$img_url);
+        $img_url = $baseurl . '/filestore' . $urls[1];
+        $video->setImage($img_url);
         $video->setHls(get_data_by_field($resource['ref'], $config['pressmatrix_video_ready']));
 
         $valid_items[] = $video;

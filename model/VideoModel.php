@@ -89,13 +89,14 @@ class VideoModel
 
     public function getEntry(){
         $data = '<item>';
-        $data .= '<title>' . $this->getTitle() . '</title>';
+        $data .= '<title>' . htmlspecialchars($this->getTitle()) . '</title>';
         $data .= '<description><![CDATA[' . $this->getDescription() . ']]></description>';
-        $data .= '<link>' . $this->getLink() . '</link>';
+        $data .= '<link>' . htmlspecialchars($this->getLink()) . '</link>';
         $data .= '<pubDate>' . $this->getEvt()->format('r') . '</pubDate>';
-        $data .= '<guid>' . $this->getGuid() . '</guid>';
+        $data .= '<guid isPermaLink="false">' . $this->getGuid() . '</guid>';
         //$data .= '<enclosure url="' . $this->getImage() .'"/>';
-        $data .= '<addfields:image><![CDATA[<img src="https://www.paulparey.de/wp-content/uploads/2018/07/header-logo.jpg" />]]></addfields:limage>';
+        $data .= '<enclosure url="https://www.paulparey.de/wp-content/uploads/2018/07/header-logo.jpg" />';
+        //$data .= '<addfields:image><![CDATA[<img src="https://www.paulparey.de/wp-content/uploads/2018/07/header-logo.jpg" />]]></addfields:limage>';
         $data .= '</item>';
         return $data;
     }

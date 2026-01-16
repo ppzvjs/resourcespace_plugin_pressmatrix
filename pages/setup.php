@@ -79,6 +79,17 @@ $page_def[] = config_add_single_select(
     $metafield_options,
     true // required
 );
+$page_def[] = config_add_single_select(
+    'pressmatrix_video_mediakey',
+    $lang['pressmatrix_video_mediakey'],
+    $metafield_options,
+    true // required
+);
+$page_def[] = config_add_text_input(
+    'pressmatrix_video_hlsurl',
+    $lang['pressmatrix_video_hlsurl']
+);
+
 
 // Do the page generation ritual -- don't change this section.
 config_gen_setup_post($page_def, $plugin_name);

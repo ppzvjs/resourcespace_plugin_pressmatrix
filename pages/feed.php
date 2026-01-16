@@ -40,6 +40,7 @@ $results = do_search("@@$active_node @@$object_node", "3", "resourceid", 0, 2, "
 $valid_items = [];
 $date_field_id = $config['pressmatrix_video_evt'];
 $ready_field_id = $config['pressmatrix_video_ready'];
+$mediakey_field_id = $config['pressmatrix_video_mediakey'];
 
 if (is_array($results)) {
     foreach ($results as $resource) {
@@ -61,6 +62,8 @@ if (is_array($results)) {
 
         $img_url = get_resource_path($ref, true, 'pre', false);
 
+        //"hls": "https://hls-master.video.pareygo.de/566eab426f3ab82e742ba996e6f5718d.m3u8",
+        $hlsurl = $config['pressmatrix_video_hlsur'] . get_data_by_field($ref,$mediakey_field_id) . '.m3u8';
 
         // 3. Map Resource to VideoModel
         $video = new VideoModel();
@@ -77,7 +80,7 @@ if (is_array($results)) {
         $urls = explode('/filestore',$img_url);
         $img_url = $baseurl . '/filestore' . $urls[1];
         $video->setImage($img_url);
-        $video->setHls(get_data_by_field($resource['ref'], $config['pressmatrix_video_ready']));
+        $video->setHls($hlsurl);
 
         $valid_items[] = $video;
         if (count($valid_items) >= 50) break;
@@ -95,4 +98,5 @@ foreach ($valid_items as $item) {
 }
 
 header('Content-Type: application/rss+xml; charset=utf-8');
+header('X-Content-Type-Options: nosniff');
 echo $feed->getFeed();

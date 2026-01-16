@@ -14,5 +14,7 @@ $lang['pressmatrix_video_duration'] = 'Duration';
 $lang['pressmatrix_video_object'] = 'Object';
 $lang['pressmatrix_video_active'] = 'Active';
 $lang['pressmatrix_video_ready'] = 'Transcoding Success';
+$lang['pressmatrix_video_mediakey'] = 'Mediakey for HLS';
+$lang['pressmatrix_video_hlsurl'] = 'Base Url for HLS';
 
 $lang['pressmatrix_feed_file'] = 'Output File for for feed';

@@ -63,7 +63,7 @@ if (is_array($results)) {
         $img_url = get_resource_path($ref, true, 'pre', false);
 
         //"hls": "https://hls-master.video.pareygo.de/566eab426f3ab82e742ba996e6f5718d.m3u8",
-        $hlsurl = $config['pressmatrix_video_hlsur'] . get_data_by_field($ref,$mediakey_field_id) . '.m3u8';
+        $hlsurl = $config['pressmatrix_video_hlsurl'] . get_data_by_field($ref,$mediakey_field_id) . '.m3u8';
 
         // 3. Map Resource to VideoModel
         $video = new VideoModel();

@@ -87,9 +87,16 @@ class VideoModel
     }
 
     public function getEntry(){
+
+        $video = '<video width="640" height="360" controls>
+  <source src="' . htmlspecialchars($this->getHls()) .'" type="application/x-mpegURL">
+            Dein Browser unterstützt das Video-Tag nicht.
+</video>';
+
+
         $data = '<item>';
         $data .= '<title>' . htmlspecialchars($this->getTitle()) . '</title>';
-        $data .= '<description><![CDATA[' . $this->getDescription() . ']]></description>';
+        $data .= '<description><![CDATA[' . $this->getDescription() . "<br>" . $video .']]></description>';
         $data .= '<link>' . htmlspecialchars($this->getLink()) . '</link>';
         $data .= '<pubDate>' . $this->getEvt()->format('r') . '</pubDate>';
 

@@ -158,14 +158,22 @@ class FeedModel
 
     public function getFeed()
     {
-        $data = '<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">';
+        $data = '<?xml version="1.0" encoding="UTF-8"?>';
+        $data .= '<?xml-stylesheet type="text/xsl" href="https://paulparey.de" ?>';
+        $data .= '<rss 
+        xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+        xmlns:wfw="http://wellformedweb.org/CommentAPI/" 
+        xmlns:dc="http://purl.org/dc/elements/1.1/" 
+        xmlns:atom="http://www.w3.org/2005/Atom" 
+        xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" 
+        xmlns:slash="http://purl.org/rss/1.0/modules/slash/" version="2.0">';
         $data .= '<channel>';
         $data .= '<title>' . $this->getTitle() . '</title>';
         $data .= '<atom:link href="' . $this->getFeedLink() . '" rel="self" type="application/rss+xml"/>';
         $data .= '<link>' . $this->getLink() . '</link>';
         $data .= '<description>' . $this->getDescription() . '</description>';
         $data .= '<lastBuildDate>' . $this->getBuildDate()->format('r') . '</lastBuildDate>';
-        $data .= '<language/>';
+        $data .= '<language>de</language>';
         $data .= '<sy:updatePeriod>' . $this->getUpdatePeriod() . '</sy:updatePeriod>';
         $data .= '<sy:updateFrequency>' . $this->getUpdateFrequency() . '</sy:updateFrequency>';
         $data .= '<generator>' . $this->getGenerator() . '</generator>';

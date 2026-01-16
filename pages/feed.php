@@ -23,7 +23,7 @@ $feed = new FeedModel();
 $feed->setTitle("Pressmatrix Feed: " . strtoupper($feedname));
 $feed->setLink("https://paulparey.de");
 $feed->setFeedlink((isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
-$feed->setDescription("Video feed for " . $feedname);
+
 $feed->setBuildDate(new \DateTime());
 $feed->setImageUrl("https://www.paulparey.de/wp-content/uploads/2018/07/header-logo.jpg"); // Set your logo
 $feed->setImageTitle("Paul Parey");
@@ -37,6 +37,7 @@ $object_node = get_node_id(strtoupper($feedname), $config['pressmatrix_video_obj
 // Fetch more than 50 to ensure we have enough after filtering
 $results = do_search("@@$active_node @@$object_node", "3", "resourceid", 0, intval($config['pressmatrix_video_articles']), "DESC");
 
+$feed->setDescription("Video feed for " . $feedname . ' count ' . count($results));
 $valid_items = [];
 $date_field_id = $config['pressmatrix_video_evt'];
 $ready_field_id = $config['pressmatrix_video_ready'];
@@ -57,8 +58,10 @@ if (is_array($results)) {
         $date_val = get_data_by_field($ref, $date_field_id);
         if (!$date_val) continue;
 
+
         $resource_ts = strtotime($date_val);
-        if ($resource_ts < $today_ts) continue;
+
+        if ($resource_ts > $today_ts) continue;
 
         $img_url = get_resource_path($ref, true, 'pre', false);
 

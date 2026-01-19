@@ -31,6 +31,17 @@ $page_def = [];
 
 
 $page_def[] = config_add_section_header($lang['pressmatrix_header_baseconfig'],$lang['pressmatrix_header_baseconfig_description']);
+$page_def[] = config_add_text_input(
+    'pressmatrix_video_hlsurl',
+    $lang['pressmatrix_video_hlsurl']
+);
+$page_def[] = config_add_text_input(
+    'pressmatrix_video_articles',
+    $lang['pressmatrix_video_articles']
+);
+
+$page_def[] = config_add_section_header($lang['pressmatrix_header_field'],$lang['pressmatrix_header_field_description']);
+
 $page_def[] = config_add_single_select(
     'pressmatrix_video_title',
     $lang['pressmatrix_video_title'],
@@ -85,14 +96,7 @@ $page_def[] = config_add_single_select(
     $metafield_options,
     true // required
 );
-$page_def[] = config_add_text_input(
-    'pressmatrix_video_hlsurl',
-    $lang['pressmatrix_video_hlsurl']
-);
-$page_def[] = config_add_text_input(
-    'pressmatrix_video_articles',
-    $lang['pressmatrix_video_articles']
-);
+
 
 
 // Do the page generation ritual -- don't change this section.

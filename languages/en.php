@@ -6,6 +6,9 @@ $lang['pressmatrix_header_baseconfig'] = 'Basis configuration';
 $lang['pressmatrix_header_baseconfig_description'] = 'Base informations about this plugin';
 $lang['pressmatrix_baseconfig_1080p'] = 'Fieldnumber of the 1080p file';
 
+$lang['pressmatrix_header_field'] = 'Field Mapper';
+$lang['pressmatrix_header_field_description'] = 'Mapping the necessary fields with custom meta fields';
+
 $lang['pressmatrix_video_title'] = 'Title';
 $lang['pressmatrix_video_description'] = 'Description';
 $lang['pressmatrix_video_file'] = '1080p Output File';

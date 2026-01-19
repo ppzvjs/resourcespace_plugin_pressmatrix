@@ -58,6 +58,9 @@ if (is_array($results)) {
         $date_val = get_data_by_field($ref, $date_field_id);
         if (!$date_val) continue;
 
+        $mediakey_val = get_data_by_field($ref,$mediakey_field_id);
+        if(!$mediakey_val) continue;
+
 
         $resource_ts = strtotime($date_val);
 

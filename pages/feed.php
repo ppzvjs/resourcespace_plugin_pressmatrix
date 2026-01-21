@@ -83,7 +83,7 @@ if (is_array($results)) {
         $video->setLink("https://paulparey.de/?r=" . $resource['ref']);
 
         if($free_val != 'frei'){
-            //$video->setPrice($config['pressmatrix_video_price']);
+            ///$video->setPrice($config['pressmatrix_video_price']);
             //$video->setExternalId(strtolower($feedname). '.video.' . $ref);
 
         }

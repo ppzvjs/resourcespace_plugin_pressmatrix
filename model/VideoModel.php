@@ -16,6 +16,36 @@ class VideoModel
 
     private string $hls;
 
+    private int $price = 0;
+
+    private string $external_id = '';
+
+    public function getExternalId(): string
+    {
+        return $this->external_id;
+    }
+
+    public function setExternalId(string $external_id): void
+    {
+        $this->external_id = $external_id;
+    }
+
+
+
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
+
+
+
+    public function setPrice(int $price): void
+    {
+        $this->price = $price;
+    }
+
+
+
     public function getTitle(): string
     {
         return $this->title;
@@ -112,6 +142,11 @@ class VideoModel
         /*if (!empty($this->getHls()) && strpos($this->getHls(), 'http') === 0) {
             $data .= '<media:content url="' . htmlspecialchars($this->getHls()) . '" type="application/x-mpegURL" />';
         }*/
+
+        if($this->getPrice() >= 1){
+            $data .= '<price>' . $this->getPrice() . '</price>';
+            $data .= '<product_external_id>' . $this->getExternalId() . '</product_external_id>';
+        }
 
         $data .= '<media:group>';
         $data .= '<media:content url="' . htmlspecialchars($this->getHls()) . '" type="application/x-mpegURL" medium="video" />';

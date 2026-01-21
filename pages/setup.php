@@ -96,6 +96,16 @@ $page_def[] = config_add_single_select(
     $metafield_options,
     true // required
 );
+$page_def[] = config_add_single_select(
+    'pressmatrix_video_free',
+    $lang['pressmatrix_video_free'],
+    $metafield_options,
+    true // required
+);
+$page_def[] = config_add_text_input(
+    'pressmatrix_video_price',
+    $lang['pressmatrix_video_price']
+);
 
 
 

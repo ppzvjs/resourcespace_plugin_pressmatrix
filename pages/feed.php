@@ -42,6 +42,7 @@ $valid_items = [];
 $date_field_id = $config['pressmatrix_video_evt'];
 $ready_field_id = $config['pressmatrix_video_ready'];
 $mediakey_field_id = $config['pressmatrix_video_mediakey'];
+$free_field_id = $config['pressmatrix_video_free'];
 
 if (is_array($results)) {
     foreach ($results as $resource) {
@@ -61,6 +62,9 @@ if (is_array($results)) {
         $mediakey_val = get_data_by_field($ref,$mediakey_field_id);
         if(!$mediakey_val) continue;
 
+        $free_val = get_data_by_field($ref,$free_field_id);
+
+
 
         $resource_ts = strtotime($date_val);
 
@@ -78,6 +82,11 @@ if (is_array($results)) {
         $video->setDescription(get_data_by_field($resource['ref'], $config['pressmatrix_video_description']));
         $video->setLink("https://paulparey.de/?r=" . $resource['ref']);
 
+        if($free_val != 'frei'){
+            $video->setPrice($config['pressmatrix_video_price']);
+            $video->setExternalId(strtolower($feedname). '.video.' . $ref);
+
+        }
         // Convert stored string to DateTime object
         $video->setEvt(new \DateTime($date_val));
 

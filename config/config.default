@@ -19,3 +19,6 @@ $pressmatrix_video_mediakey = '';
 $pressmatrix_video_hlsurl = '';
 
 $pressmatrix_video_articles = 5;
+
+$pressmatrix_video_free = '';
+$pressmatrix_video_price = 0;

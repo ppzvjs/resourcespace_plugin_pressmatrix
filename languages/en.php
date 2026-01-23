@@ -25,3 +25,52 @@ $lang['pressmatrix_video_price'] = 'Price in cent';
 $lang['pressmatrix_feed_file'] = 'Output File for for feed';
 
 $lang['pressmatrix_video_articles'] = 'Count video per feed';
+
+$lang['pressmatrix_header_article_categories'] = 'Kategorie Article Mapper';
+$lang['pressmatrix_header_article_categories_description'] = 'Mapping categories number for pressmatrix articles';
+
+$lang['pressmatrix_object_fuf']  = 'FUF';
+$lang['pressmatrix_object_wuh']  = 'WUH';
+$lang['pressmatrix_object_djz']  = 'DJZ';
+$lang['pressmatrix_object_rf']  = 'RF';
+$lang['pressmatrix_object_jww']  = 'JWW';
+
+$lang['pressmatrix_article_fuf_2026'] = '2026';
+$lang['pressmatrix_article_fuf_2025'] = '2025';
+$lang['pressmatrix_article_fuf_2024'] = '2024';
+$lang['pressmatrix_article_fuf_2023'] = '2023';
+$lang['pressmatrix_article_fuf_2022'] = '2022';
+$lang['pressmatrix_article_fuf_2021'] = '2021';
+$lang['pressmatrix_article_fuf_2020'] = '2020';
+
+$lang['pressmatrix_article_wuh_2026'] = '2026';
+$lang['pressmatrix_article_wuh_2025'] = '2025';
+$lang['pressmatrix_article_wuh_2024'] = '2024';
+$lang['pressmatrix_article_wuh_2023'] = '2023';
+$lang['pressmatrix_article_wuh_2022'] = '2022';
+$lang['pressmatrix_article_wuh_2021'] = '2021';
+$lang['pressmatrix_article_wuh_2020'] = '2020';
+
+$lang['pressmatrix_article_djz_2026'] = '2026';
+$lang['pressmatrix_article_djz_2025'] = '2025';
+$lang['pressmatrix_article_djz_2024'] = '2024';
+$lang['pressmatrix_article_djz_2023'] = '2023';
+$lang['pressmatrix_article_djz_2022'] = '2022';
+$lang['pressmatrix_article_djz_2021'] = '2021';
+$lang['pressmatrix_article_djz_2020'] = '2020';
+
+$lang['pressmatrix_article_jww_2026'] = '2026';
+$lang['pressmatrix_article_jww_2025'] = '2025';
+$lang['pressmatrix_article_jww_2024'] = '2024';
+$lang['pressmatrix_article_jww_2023'] = '2023';
+$lang['pressmatrix_article_jww_2022'] = '2022';
+$lang['pressmatrix_article_jww_2021'] = '2021';
+$lang['pressmatrix_article_jww_2020'] = '2020';
+
+$lang['pressmatrix_article_rf_2026'] = '2026';
+$lang['pressmatrix_article_rf_2025'] = '2025';
+$lang['pressmatrix_article_rf_2024'] = '2024';
+$lang['pressmatrix_article_rf_2023'] = '2023';
+$lang['pressmatrix_article_rf_2022'] = '2022';
+$lang['pressmatrix_article_rf_2021'] = '2021';
+$lang['pressmatrix_article_rf_2020'] = '2020';

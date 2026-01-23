@@ -107,7 +107,57 @@ $page_def[] = config_add_text_input(
     $lang['pressmatrix_video_price']
 );
 
+$page_def[] = config_add_section_header($lang['pressmatrix_header_article_categories'],$lang['pressmatrix_header_article_categories_description']);
 
+$page_def[] = config_add_section_header($lang['pressmatrix_object_fuf'],'');
+
+$page_def[] = config_add_text_input('pressmatrix_article_fuf_2026', $lang['pressmatrix_article_fuf_2026']);
+$page_def[] = config_add_text_input('pressmatrix_article_fuf_2025', $lang['pressmatrix_article_fuf_2025']);
+$page_def[] = config_add_text_input('pressmatrix_article_fuf_2024', $lang['pressmatrix_article_fuf_2024']);
+$page_def[] = config_add_text_input('pressmatrix_article_fuf_2023', $lang['pressmatrix_article_fuf_2023']);
+$page_def[] = config_add_text_input('pressmatrix_article_fuf_2022', $lang['pressmatrix_article_fuf_2022']);
+$page_def[] = config_add_text_input('pressmatrix_article_fuf_2021', $lang['pressmatrix_article_fuf_2021']);
+$page_def[] = config_add_text_input('pressmatrix_article_fuf_2020', $lang['pressmatrix_article_fuf_2020']);
+
+$page_def[] = config_add_section_header($lang['pressmatrix_object_wuh'],'');
+
+$page_def[] = config_add_text_input('pressmatrix_article_wuh_2026', $lang['pressmatrix_article_wuh_2026']);
+$page_def[] = config_add_text_input('pressmatrix_article_wuh_2025', $lang['pressmatrix_article_wuh_2025']);
+$page_def[] = config_add_text_input('pressmatrix_article_wuh_2024', $lang['pressmatrix_article_wuh_2024']);
+$page_def[] = config_add_text_input('pressmatrix_article_wuh_2023', $lang['pressmatrix_article_wuh_2023']);
+$page_def[] = config_add_text_input('pressmatrix_article_wuh_2022', $lang['pressmatrix_article_wuh_2022']);
+$page_def[] = config_add_text_input('pressmatrix_article_wuh_2021', $lang['pressmatrix_article_wuh_2021']);
+$page_def[] = config_add_text_input('pressmatrix_article_wuh_2020', $lang['pressmatrix_article_wuh_2020']);
+
+$page_def[] = config_add_section_header($lang['pressmatrix_object_djz'],'');
+
+$page_def[] = config_add_text_input('pressmatrix_article_djz_2026', $lang['pressmatrix_article_djz_2026']);
+$page_def[] = config_add_text_input('pressmatrix_article_djz_2025', $lang['pressmatrix_article_djz_2025']);
+$page_def[] = config_add_text_input('pressmatrix_article_djz_2024', $lang['pressmatrix_article_djz_2024']);
+$page_def[] = config_add_text_input('pressmatrix_article_djz_2023', $lang['pressmatrix_article_djz_2023']);
+$page_def[] = config_add_text_input('pressmatrix_article_djz_2022', $lang['pressmatrix_article_djz_2022']);
+$page_def[] = config_add_text_input('pressmatrix_article_djz_2021', $lang['pressmatrix_article_djz_2021']);
+$page_def[] = config_add_text_input('pressmatrix_article_djz_2020', $lang['pressmatrix_article_djz_2020']);
+
+$page_def[] = config_add_section_header($lang['pressmatrix_object_jww'],'');
+
+$page_def[] = config_add_text_input('pressmatrix_article_jww_2026', $lang['pressmatrix_article_jww_2026']);
+$page_def[] = config_add_text_input('pressmatrix_article_jww_2025', $lang['pressmatrix_article_jww_2025']);
+$page_def[] = config_add_text_input('pressmatrix_article_jww_2024', $lang['pressmatrix_article_jww_2024']);
+$page_def[] = config_add_text_input('pressmatrix_article_jww_2023', $lang['pressmatrix_article_jww_2023']);
+$page_def[] = config_add_text_input('pressmatrix_article_jww_2022', $lang['pressmatrix_article_jww_2022']);
+$page_def[] = config_add_text_input('pressmatrix_article_jww_2021', $lang['pressmatrix_article_jww_2021']);
+$page_def[] = config_add_text_input('pressmatrix_article_jww_2020', $lang['pressmatrix_article_jww_2020']);
+
+$page_def[] = config_add_section_header($lang['pressmatrix_object_rf'],'');
+
+$page_def[] = config_add_text_input('pressmatrix_article_rf_2026', $lang['pressmatrix_article_rf_2026']);
+$page_def[] = config_add_text_input('pressmatrix_article_rf_2025', $lang['pressmatrix_article_rf_2025']);
+$page_def[] = config_add_text_input('pressmatrix_article_rf_2024', $lang['pressmatrix_article_rf_2024']);
+$page_def[] = config_add_text_input('pressmatrix_article_rf_2023', $lang['pressmatrix_article_rf_2023']);
+$page_def[] = config_add_text_input('pressmatrix_article_rf_2022', $lang['pressmatrix_article_rf_2022']);
+$page_def[] = config_add_text_input('pressmatrix_article_rf_2021', $lang['pressmatrix_article_rf_2021']);
+$page_def[] = config_add_text_input('pressmatrix_article_rf_2020', $lang['pressmatrix_article_rf_2020']);
 
 // Do the page generation ritual -- don't change this section.
 config_gen_setup_post($page_def, $plugin_name);

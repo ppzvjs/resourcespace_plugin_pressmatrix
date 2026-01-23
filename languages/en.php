@@ -26,6 +26,16 @@ $lang['pressmatrix_feed_file'] = 'Output File for for feed';
 
 $lang['pressmatrix_video_articles'] = 'Count video per feed';
 
+$lang['pressmatrix_header_long_title'] = 'Fullname Object';
+$lang['pressmatrix_header_long_description'] = 'Longname of object';
+
+$lang['pressmatrix_longname_fuf'] = 'FUF';
+$lang['pressmatrix_longname_wuh'] = 'WUH';
+$lang['pressmatrix_longname_djz'] = 'DJZ';
+$lang['pressmatrix_longname_jww'] = 'JWW';
+$lang['pressmatrix_longname_rf'] = 'RF';
+
+
 $lang['pressmatrix_header_article_categories'] = 'Kategorie Article Mapper';
 $lang['pressmatrix_header_article_categories_description'] = 'Mapping categories number for pressmatrix articles';
 

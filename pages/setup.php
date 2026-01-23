@@ -107,6 +107,14 @@ $page_def[] = config_add_text_input(
     $lang['pressmatrix_video_price']
 );
 
+$page_def[] = config_add_section_header($lang['pressmatrix_header_long_title'],$lang['pressmatrix_header_long_description']);
+$page_def[] = config_add_text_input('pressmatrix_longname_fuf', $lang['pressmatrix_longname_fuf']);
+$page_def[] = config_add_text_input('pressmatrix_longname_wuh', $lang['pressmatrix_longname_wuh']);
+$page_def[] = config_add_text_input('pressmatrix_longname_djz', $lang['pressmatrix_longname_djz']);
+$page_def[] = config_add_text_input('pressmatrix_longname_jww', $lang['pressmatrix_longname_jww']);
+$page_def[] = config_add_text_input('pressmatrix_longname_rf', $lang['pressmatrix_longname_rf']);
+
+
 $page_def[] = config_add_section_header($lang['pressmatrix_header_article_categories'],$lang['pressmatrix_header_article_categories_description']);
 
 $page_def[] = config_add_section_header($lang['pressmatrix_object_fuf'],'');

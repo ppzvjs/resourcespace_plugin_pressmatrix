@@ -20,6 +20,59 @@ class VideoModel
 
     private string $external_id = '';
 
+    private string $duration;
+
+    private string $object;
+
+    private string $objecttitle;
+
+    private $config;
+
+    public function __construct($config)
+    {
+        $this->config = $config;
+    }
+
+    public function getDuration(): string
+    {
+        return $this->duration;
+    }
+
+    public function getDurationFormatted(): string
+    {
+        $minutes = floor($this->duration / 60);
+        $seconds = $this->duration % 60;
+
+        return sprintf('%02d:%02d min', $minutes, $seconds);
+    }
+
+    public function setDuration(string $duration): void
+    {
+        $this->duration = $duration;
+    }
+
+    public function getObject(): string
+    {
+        return $this->object;
+    }
+
+    public function setObject(string $object): void
+    {
+        $this->object = $object;
+    }
+
+    public function getObjecttitle(): string
+    {
+        return $this->config['pressmatrix_longname_' . strtolower($this->object)];
+    }
+
+    public function setObjecttitle(string $objecttitle): void
+    {
+        $this->objecttitle = $objecttitle;
+    }
+
+
+
     public function getExternalId(): string
     {
         return $this->external_id;
@@ -118,7 +171,7 @@ class VideoModel
 
     public function getEntry(){
 
-        $video = '<video width="640" height="360" controls>
+        $video = '<video width="100%" controls>
   <source src="' . htmlspecialchars($this->getHls()) .'" type="application/x-mpegURL">
             Dein Browser unterstützt das Video-Tag nicht.
 </video>';
@@ -126,7 +179,7 @@ class VideoModel
 
         $data = '<item>';
         $data .= '<title>' . htmlspecialchars($this->getTitle()) . '</title>';
-        $data .= '<description><![CDATA[' . $this->getDescription() . "<br>" . $video .']]></description>';
+        $data .= '<description><![CDATA[' . '<h1>' . $this->getTitle() . '</h1><h4>' . $this->getObjecttitle() . ' | ' . $this->getDurationFormatted() . '</h4>' . $this->getDescription() . "<br><br>" . $video .']]></description>';
         $data .= '<link>' . htmlspecialchars($this->getLink()) . '</link>';
         $data .= '<pubDate>' . $this->getEvt()->format('r') . '</pubDate>';
 

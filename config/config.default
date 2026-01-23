@@ -23,6 +23,12 @@ $pressmatrix_video_articles = 5;
 $pressmatrix_video_free = '';
 $pressmatrix_video_price = 0;
 
+$pressmatrix_longname_fuf = 'FISCH & FANG';
+$pressmatrix_longname_wuh = 'WILD UND HUND';
+$pressmatrix_longname_djz = 'DEUTSCHE JAGDZEITUNG';
+$pressmatrix_longname_jww = 'JAGEN WELTWEIT';
+$pressmatrix_longname_rf = 'RAUBFISCH';
+
 $pressmatrix_article_fuf_2026 = 0;
 $pressmatrix_article_fuf_2025 = 0;
 $pressmatrix_article_fuf_2024 = 0;

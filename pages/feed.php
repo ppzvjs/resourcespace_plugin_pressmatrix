@@ -76,8 +76,10 @@ if (is_array($results)) {
         $hlsurl = $config['pressmatrix_video_hlsurl'] . get_data_by_field($ref,$mediakey_field_id) . '.m3u8';
 
         // 3. Map Resource to VideoModel
-        $video = new VideoModel();
+        $video = new VideoModel($config);
         $video->setGuid($ref);
+        $video->setObject($feedname);
+        $video->setDuration($config['pressmatrix_video_duration']);
         $video->setTitle(get_data_by_field($resource['ref'], $config['pressmatrix_video_title']) ?: "Resource " . $resource['ref']);
         $video->setDescription(get_data_by_field($resource['ref'], $config['pressmatrix_video_description']));
         $video->setLink("https://paulparey.de/?r=" . $resource['ref']);

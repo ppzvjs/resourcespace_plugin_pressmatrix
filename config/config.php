@@ -19,3 +19,52 @@ $pressmatrix_video_mediakey = '';
 $pressmatrix_video_hlsurl = '';
 
 $pressmatrix_video_articles = 5;
+
+$pressmatrix_longname_fuf = 'FISCH & FANG';
+$pressmatrix_longname_wuh = 'WILD UND HUND';
+$pressmatrix_longname_djz = 'DEUTSCHE JAGDZEITUNG';
+$pressmatrix_longname_jww = 'JAGEN WELTWEIT';
+$pressmatrix_longname_rf = 'RAUBFISCH';
+
+$pressmatrix_video_free = '';
+$pressmatrix_video_price = 0;
+
+$pressmatrix_article_fuf_2026 = 0;
+$pressmatrix_article_fuf_2025 = 0;
+$pressmatrix_article_fuf_2024 = 0;
+$pressmatrix_article_fuf_2023 = 0;
+$pressmatrix_article_fuf_2022 = 0;
+$pressmatrix_article_fuf_2021 = 0;
+$pressmatrix_article_fuf_2020 = 0;
+
+$pressmatrix_article_wuh_2026 = 0;
+$pressmatrix_article_wuh_2025 = 0;
+$pressmatrix_article_wuh_2024 = 0;
+$pressmatrix_article_wuh_2023 = 0;
+$pressmatrix_article_wuh_2022 = 0;
+$pressmatrix_article_wuh_2021 = 0;
+$pressmatrix_article_wuh_2020 = 0;
+
+$pressmatrix_article_djz_2026 = 0;
+$pressmatrix_article_djz_2025 = 0;
+$pressmatrix_article_djz_2024 = 0;
+$pressmatrix_article_djz_2023 = 0;
+$pressmatrix_article_djz_2022 = 0;
+$pressmatrix_article_djz_2021 = 0;
+$pressmatrix_article_djz_2020 = 0;
+
+$pressmatrix_article_jww_2026 = 0;
+$pressmatrix_article_jww_2025 = 0;
+$pressmatrix_article_jww_2024 = 0;
+$pressmatrix_article_jww_2023 = 0;
+$pressmatrix_article_jww_2022 = 0;
+$pressmatrix_article_jww_2021 = 0;
+$pressmatrix_article_jww_2020 = 0;
+
+$pressmatrix_article_rf_2026 = 0;
+$pressmatrix_article_rf_2025 = 0;
+$pressmatrix_article_rf_2024 = 0;
+$pressmatrix_article_rf_2023 = 0;
+$pressmatrix_article_rf_2022 = 0;
+$pressmatrix_article_rf_2021 = 0;
+$pressmatrix_article_rf_2020 = 0;

@@ -45,6 +45,56 @@ Jetzt Jagd Podcast unter djz.de, im iTunes Store oder über Spotify beziehen!</g
 		<!-- podcast_generator="SSP by Castos/3.14.0" Seriously Simple Podcasting plugin for WordPress (https://wordpress.org/plugins/seriously-simple-podcasting/) -->
 		<generator>https://wordpress.org/?v=6.8.5</generator>
 
+
+
+
+
+
+
+
+
+
+
+			<item>
+				<title>DJZ-Kanzelklatsch – Waffenreinigung: Pflicht oder Kür?</title>
+				<link>https://djz.de/podcast/test/</link>
+				<pubDate>Wed, 25 Apr 2026 14:36:14 +0000</pubDate>
+				<dc:creator><![CDATA[Deutsche Jagdzeitung]]></dc:creator>
+				<guid isPermaLink="false">aaaaaa-8233-5620-9bb2-32a60aaf5bb5</guid>
+				<description><![CDATA[In dieser Folge des DJZ-Kanzelklatsch dreht sich alles um die Waffenreinigung. Viele Jäger sehen darin nur eine lästige Pflicht, doch wir klären auf, wie entscheidend die Pflege für die Präzision und Langlebigkeit Ihrer Büchse wirklich ist.]]></description>
+				<itunes:subtitle><![CDATA[Alles über die richtige Pflege und die Auswirkungen auf die Präzision Ihrer Jagdwaffe.]]></itunes:subtitle>
+				<itunes:summary><![CDATA[Im DJZ Podcast geht es diesmal um ein Thema, das für viele Jäger eher die lästige Pflicht als die Kür darstellt: Waffenreinigung. Was dieses mit der Präzision der Büchse zu tun hat, welche Utensilien man wirklich braucht und wie man den Lauf chemisch reinigt, besprechen wir in dieser Episode.]]></itunes:summary>
+				<content:encoded><![CDATA[<p>Im DJZ Podcast geht es diesmal um ein Thema, das für viele Jäger eher die lästige Pflicht als die Kür darstellt: <strong>Waffenreinigung</strong>.</p><p>Was dieses mit der Präzision der Büchse zu tun hat, welche Utensilien man wirklich braucht und wie man den Lauf chemisch reinigt, besprechen wir detailliert in dieser Episode des Kanzelklatsch.</p>]]></content:encoded>
+				<enclosure url="https://djz.de/podcast-download/1539775/test.mp3" length="157597440" type="audio/mpeg"/>
+				<itunes:image href="https://djz.de/wp-content/uploads/sites/3/2026/02/DJZ_PODCAST_Kanzelklatsch_Waffenreinigung-1.jpg"/>
+				<image>
+					<url>https://djz.de/wp-content/uploads/sites/3/2026/02/DJZ_PODCAST_Kanzelklatsch_Waffenreinigung-1.jpg</url>
+					<title>DJZ-Kanzelklatsch – Waffenreinigung: Pflicht oder Kür?</title>
+				</image>
+				<itunes:explicit>false</itunes:explicit>
+				<itunes:block>no</itunes:block>
+				<itunes:duration>01:05:40</itunes:duration>
+				<itunes:author><![CDATA[Deutsche Jagdzeitung]]></itunes:author>
+				<googleplay:description><![CDATA[In dieser Folge des DJZ-Kanzelklatsch dreht sich alles um die Waffenreinigung und deren Einfluss auf die Präzision der Büchse.]]></googleplay:description>
+				<googleplay:image href="https://djz.de/wp-content/uploads/sites/3/2026/02/DJZ_PODCAST_Kanzelklatsch_Waffenreinigung-1.jpg"/>
+				<googleplay:explicit>No</googleplay:explicit>
+				<googleplay:block>no</googleplay:block>
+			</item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <item>
 	<title>DJZ-Kanzelklatsch – Test</title>
 	<link>https://djz.de/podcast/test/</link>

@@ -113,6 +113,7 @@ $page_def[] = config_add_text_input('pressmatrix_longname_wuh', $lang['pressmatr
 $page_def[] = config_add_text_input('pressmatrix_longname_djz', $lang['pressmatrix_longname_djz']);
 $page_def[] = config_add_text_input('pressmatrix_longname_jww', $lang['pressmatrix_longname_jww']);
 $page_def[] = config_add_text_input('pressmatrix_longname_rf', $lang['pressmatrix_longname_rf']);
+$page_def[] = config_add_text_input('pressmatrix_longname_nor', $lang['pressmatrix_longname_nor']);
 
 
 $page_def[] = config_add_section_header($lang['pressmatrix_header_article_categories'],$lang['pressmatrix_header_article_categories_description']);
@@ -126,6 +127,16 @@ $page_def[] = config_add_text_input('pressmatrix_article_fuf_2023', $lang['press
 $page_def[] = config_add_text_input('pressmatrix_article_fuf_2022', $lang['pressmatrix_article_fuf_2022']);
 $page_def[] = config_add_text_input('pressmatrix_article_fuf_2021', $lang['pressmatrix_article_fuf_2021']);
 $page_def[] = config_add_text_input('pressmatrix_article_fuf_2020', $lang['pressmatrix_article_fuf_2020']);
+
+$page_def[] = config_add_section_header($lang['pressmatrix_object_nor'],'');
+
+$page_def[] = config_add_text_input('pressmatrix_article_nor_2026', $lang['pressmatrix_article_nor_2026']);
+$page_def[] = config_add_text_input('pressmatrix_article_nor_2025', $lang['pressmatrix_article_nor_2025']);
+$page_def[] = config_add_text_input('pressmatrix_article_nor_2024', $lang['pressmatrix_article_nor_2024']);
+$page_def[] = config_add_text_input('pressmatrix_article_nor_2023', $lang['pressmatrix_article_nor_2023']);
+$page_def[] = config_add_text_input('pressmatrix_article_nor_2022', $lang['pressmatrix_article_nor_2022']);
+$page_def[] = config_add_text_input('pressmatrix_article_nor_2021', $lang['pressmatrix_article_nor_2021']);
+$page_def[] = config_add_text_input('pressmatrix_article_nor_2020', $lang['pressmatrix_article_nor_2020']);
 
 $page_def[] = config_add_section_header($lang['pressmatrix_object_wuh'],'');
 

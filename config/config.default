@@ -28,6 +28,7 @@ $pressmatrix_longname_wuh = 'WILD UND HUND';
 $pressmatrix_longname_djz = 'DEUTSCHE JAGDZEITUNG';
 $pressmatrix_longname_jww = 'JAGEN WELTWEIT';
 $pressmatrix_longname_rf = 'RAUBFISCH';
+$pressmatrix_longname_nor = 'Norwegen';
 
 $pressmatrix_article_fuf_2026 = 0;
 $pressmatrix_article_fuf_2025 = 0;
@@ -68,3 +69,11 @@ $pressmatrix_article_rf_2023 = 0;
 $pressmatrix_article_rf_2022 = 0;
 $pressmatrix_article_rf_2021 = 0;
 $pressmatrix_article_rf_2020 = 0;
+
+$pressmatrix_article_nor_2026 = 0;
+$pressmatrix_article_nor_2025 = 0;
+$pressmatrix_article_nor_2024 = 0;
+$pressmatrix_article_nor_2023 = 0;
+$pressmatrix_article_nor_2022 = 0;
+$pressmatrix_article_nor_2021 = 0;
+$pressmatrix_article_nor_2020 = 0;

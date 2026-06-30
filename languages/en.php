@@ -34,6 +34,7 @@ $lang['pressmatrix_longname_wuh'] = 'WUH';
 $lang['pressmatrix_longname_djz'] = 'DJZ';
 $lang['pressmatrix_longname_jww'] = 'JWW';
 $lang['pressmatrix_longname_rf'] = 'RF';
+$lang['pressmatrix_longname_nor'] = 'NOR';
 
 
 $lang['pressmatrix_header_article_categories'] = 'Kategorie Article Mapper';
@@ -44,6 +45,7 @@ $lang['pressmatrix_object_wuh']  = 'WUH';
 $lang['pressmatrix_object_djz']  = 'DJZ';
 $lang['pressmatrix_object_rf']  = 'RF';
 $lang['pressmatrix_object_jww']  = 'JWW';
+$lang['pressmatrix_object_nor']  = 'NOR';
 
 $lang['pressmatrix_article_fuf_2026'] = '2026';
 $lang['pressmatrix_article_fuf_2025'] = '2025';
@@ -52,6 +54,14 @@ $lang['pressmatrix_article_fuf_2023'] = '2023';
 $lang['pressmatrix_article_fuf_2022'] = '2022';
 $lang['pressmatrix_article_fuf_2021'] = '2021';
 $lang['pressmatrix_article_fuf_2020'] = '2020';
+
+$lang['pressmatrix_article_nor_2026'] = '2026';
+$lang['pressmatrix_article_nor_2025'] = '2025';
+$lang['pressmatrix_article_nor_2024'] = '2024';
+$lang['pressmatrix_article_nor_2023'] = '2023';
+$lang['pressmatrix_article_nor_2022'] = '2022';
+$lang['pressmatrix_article_nor_2021'] = '2021';
+$lang['pressmatrix_article_nor_2020'] = '2020';
 
 $lang['pressmatrix_article_wuh_2026'] = '2026';
 $lang['pressmatrix_article_wuh_2025'] = '2025';

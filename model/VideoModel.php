@@ -72,7 +72,6 @@ class VideoModel
     }
 
 
-
     public function getExternalId(): string
     {
         return $this->external_id;
@@ -84,19 +83,16 @@ class VideoModel
     }
 
 
-
     public function getPrice(): int
     {
         return $this->price;
     }
 
 
-
     public function setPrice(int $price): void
     {
         $this->price = $price;
     }
-
 
 
     public function getTitle(): string
@@ -169,17 +165,18 @@ class VideoModel
         $this->hls = $hls;
     }
 
-    public function getEntry(){
+    public function getEntry()
+    {
 
         $video = '<video width="100%" controls>
-  <source src="' . htmlspecialchars($this->getHls()) .'" type="application/x-mpegURL">
+  <source src="' . htmlspecialchars($this->getHls()) . '" type="application/x-mpegURL">
             Dein Browser unterstützt das Video-Tag nicht.
 </video>';
 
 
         $data = '<item>';
         $data .= '<title>' . htmlspecialchars($this->getTitle()) . '</title>';
-        $data .= '<description><![CDATA[' . '<h1>' . $this->getTitle() . '</h1><h4>' . $this->getObjecttitle() . ' | ' . $this->getDurationFormatted() . '</h4>' . $this->getDescription() . "<br><br>" . $video .']]></description>';
+        $data .= '<description><![CDATA[' . '<h1>' . $this->getTitle() . '</h1><h4>' . $this->getObjecttitle() . ' | ' . $this->getDurationFormatted() . '</h4>' . $this->getDescription() . "<br><br>" . $video . ']]></description>';
         $data .= '<link>' . htmlspecialchars($this->getLink()) . '</link>';
         $data .= '<pubDate>' . $this->getEvt()->format('r') . '</pubDate>';
 
@@ -196,7 +193,7 @@ class VideoModel
             $data .= '<media:content url="' . htmlspecialchars($this->getHls()) . '" type="application/x-mpegURL" />';
         }*/
 
-        if($this->getPrice() >= 1){
+        if ($this->getPrice() >= 1) {
             $data .= '<price>' . $this->getPrice() . '</price>';
             $data .= '<product_external_id>' . $this->getExternalId() . '</product_external_id>';
         }
@@ -209,6 +206,33 @@ class VideoModel
 
         $data .= '</item>';
         return $data;
+    }
+
+    public function getPressmatrix()
+    {
+        $video = '<video width="100%" controls>
+  <source src="' . htmlspecialchars($this->getHls()) . '" type="application/x-mpegURL">
+            Dein Browser unterstützt das Video-Tag nicht.
+</video>';
+
+        return [
+            'story' => [
+                "name" => htmlspecialchars($this->getTitle()),
+                "title" => htmlspecialchars($this->getTitle()),
+                "preview" => "Vorschau",
+                // Pressmatrix will laut Doku Markdown, HTML/Video sollte aber klappen
+                "content" => '<h1>' . $this->getTitle() . '</h1><h4>' . $this->getObjecttitle() . ' | ' . $this->getDurationFormatted() . '</h4>' . $this->getDescription() . "<br><br>" . $video,
+                "external_id" => $this->getExternalId(),
+                "apple_product_identifier" => "video.wuh.001",
+                "google_product_identifier" => "video.wuh.001",
+                "released_at" => "2026-07-10T12:00:00Z",
+                "cents" => 199,
+                "currency" => "EUR",
+                "language" => "de",
+                "subscription_required" => false,
+                "purchase_required" => false
+            ]
+        ];
     }
 
 

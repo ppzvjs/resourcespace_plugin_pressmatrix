@@ -1,0 +1,33 @@
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"
+     xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+     version="2.0">
+    <channel>
+        <title>Pressmatrix Feed: DJZ</title>
+        <atom:link href="https://localhost/plugins/pressmatrix/pages/feed.php?name=djz" rel="self"
+                   type="application/rss+xml"/>
+        <link>https://yourdomain.com</link>
+        <description>Video feed for djz</description>
+        <lastBuildDate>Thu, 15 Jan 2026 14:33:09 +0000</lastBuildDate>
+        <language/>
+        <sy:updatePeriod>hourly</sy:updatePeriod>
+        <sy:updateFrequency>1</sy:updateFrequency>
+        <generator>https://paulparey.de</generator>
+        <image>
+            <url>https://yourdomain.com/logo.png</url>
+            <title>Paul Parey</title>
+            <link>https://yourdomain.com/logo.png</link>
+            <width>144</width>
+            <height>144</height>
+        </image>
+        <item>
+            <title>DJZ NEWS 14 01 2026</title>
+            <description>
+                <![CDATA[Ein neues Jahr, neue DJZ-News – schön, dass Sie dabei sind. Wir starten mit unseren Veranstaltungstipps: die Grüne Woche in Berlin sowie die Jagd & Hund in Dortmund. Außerdem berichten wir über einen schweren Jagdunfall im Landkreis Oldenburg, Aktuelles aus dem Wolfsmonitoring in Sachsen und Lockerungen der jagdlichen Einschränkungen zur Afrikanischen Schweinepest im Landkreis Darmstadt-Dieburg.]]></description>
+            <link>https://your-rs-url.com/?r=85</link>
+            <pubDate>Wed, 14 Jan 2026 00:00:00 +0000</pubDate>
+            <guid>85</guid>
+            <enclosure url="8441dfa905d408e462556faadd2c780d_1768404620_1080p-full-hd.mp4"/>
+        </item>
+    </channel>
+</rss>

@@ -3,6 +3,12 @@
 $pressmatrix_baseconfig_1080p = 1;
 $pressmatrix_metafield = '';
 
+$pressmatrix_api_url = "";
+$pressmatrix_api_organization = "";
+$pressmatrix_api_publication = "";
+$pressmatrix_api_token = "";
+$pressmatrix_api_filestore = "";
+
 $pressmatrix_video_title = 'Title';
 $pressmatrix_video_description = 'Description';
 $pressmatrix_video_file = '1080p Output File';

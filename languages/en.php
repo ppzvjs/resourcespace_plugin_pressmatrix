@@ -9,6 +9,15 @@ $lang['pressmatrix_baseconfig_1080p'] = 'Fieldnumber of the 1080p file';
 $lang['pressmatrix_header_field'] = 'Field Mapper';
 $lang['pressmatrix_header_field_description'] = 'Mapping the necessary fields with custom meta fields';
 
+$lang['pressmatrix_header_api'] = 'Api';
+$lang['pressmatrix_header_api_description'] = 'Pressmatrix Api';
+
+$lang['pressmatrix_api_url'] = 'Url';
+$lang['pressmatrix_api_organization'] = 'Organization';
+$lang['pressmatrix_api_publication'] = 'Publication';
+$lang['pressmatrix_api_token'] = 'Token';
+$lang['pressmatrix_api_filestore'] = 'Filestore';
+
 $lang['pressmatrix_video_title'] = 'Title';
 $lang['pressmatrix_video_description'] = 'Description';
 $lang['pressmatrix_video_file'] = '1080p Output File';

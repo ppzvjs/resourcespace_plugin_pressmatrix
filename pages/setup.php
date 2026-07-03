@@ -40,6 +40,28 @@ $page_def[] = config_add_text_input(
     $lang['pressmatrix_video_articles']
 );
 
+$page_def[] = config_add_section_header($lang['pressmatrix_header_api'],$lang['pressmatrix_header_api_description']);
+$page_def[] = config_add_text_input(
+    'pressmatrix_api_url',
+    $lang['pressmatrix_api_url']
+);
+$page_def[] = config_add_text_input(
+    'pressmatrix_api_organization',
+    $lang['pressmatrix_api_organization']
+);
+$page_def[] = config_add_text_input(
+    'pressmatrix_api_publication',
+    $lang['pressmatrix_api_publication']
+);
+$page_def[] = config_add_text_input(
+    'pressmatrix_api_token',
+    $lang['pressmatrix_api_token']
+);
+$page_def[] = config_add_text_input(
+    'pressmatrix_api_filestore',
+    $lang['pressmatrix_api_filestore']
+);
+
 $page_def[] = config_add_section_header($lang['pressmatrix_header_field'],$lang['pressmatrix_header_field_description']);
 
 $page_def[] = config_add_single_select(

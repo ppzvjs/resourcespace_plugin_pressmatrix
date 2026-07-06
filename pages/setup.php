@@ -129,6 +129,20 @@ $page_def[] = config_add_text_input(
     $lang['pressmatrix_video_price']
 );
 
+$page_def[] = config_add_single_select(
+    'pressmatrix_video_pressmatrix',
+    $lang['pressmatrix_video_pressmatrix'],
+    $metafield_options,
+    true // required
+);
+
+$page_def[] = config_add_single_select(
+    'pressmatrix_video_counter',
+    $lang['pressmatrix_video_counter'],
+    $metafield_options,
+    true // required
+);
+
 $page_def[] = config_add_section_header($lang['pressmatrix_header_long_title'],$lang['pressmatrix_header_long_description']);
 $page_def[] = config_add_text_input('pressmatrix_longname_fuf', $lang['pressmatrix_longname_fuf']);
 $page_def[] = config_add_text_input('pressmatrix_longname_wuh', $lang['pressmatrix_longname_wuh']);

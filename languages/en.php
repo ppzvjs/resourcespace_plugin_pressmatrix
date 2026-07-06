@@ -30,6 +30,8 @@ $lang['pressmatrix_video_mediakey'] = 'Mediakey for HLS';
 $lang['pressmatrix_video_hlsurl'] = 'Base Url for HLS';
 $lang['pressmatrix_video_free'] = 'Free Video';
 $lang['pressmatrix_video_price'] = 'Price in cent';
+$lang['pressmatrix_video_pressmatrix'] = 'Pressmatrix ID';
+$lang['pressmatrix_video_counter'] = 'Video Counter External';
 
 $lang['pressmatrix_feed_file'] = 'Output File for for feed';
 

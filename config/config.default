@@ -19,6 +19,9 @@ $pressmatrix_video_object = 'Object';
 $pressmatrix_video_active = 'Active';
 $pressmatrix_video_ready = 'Transcoding Success';
 
+$pressmatrix_video_pressmatrix = 'Pressmatrix ID';
+$pressmatrix_video_counter = 'Video Counter External';
+
 $pressmatrix_feed_file = '';
 
 $pressmatrix_video_mediakey = '';

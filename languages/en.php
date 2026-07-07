@@ -12,11 +12,17 @@ $lang['pressmatrix_header_field_description'] = 'Mapping the necessary fields wi
 $lang['pressmatrix_header_api'] = 'Api';
 $lang['pressmatrix_header_api_description'] = 'Pressmatrix Api';
 
-$lang['pressmatrix_api_url'] = 'Url';
-$lang['pressmatrix_api_organization'] = 'Organization';
-$lang['pressmatrix_api_publication'] = 'Publication';
-$lang['pressmatrix_api_token'] = 'Token';
-$lang['pressmatrix_api_filestore'] = 'Filestore';
+$lang['pressmatrix_api_url_jagen'] = 'Url (Jagen)';
+$lang['pressmatrix_api_organization_jagen'] = 'Organization (Jagen)';
+$lang['pressmatrix_api_publication_jagen'] = 'Publication (Jagen)';
+$lang['pressmatrix_api_token_jagen'] = 'Token (Jagen)';
+$lang['pressmatrix_api_filestore_jagen'] = 'Filestore (Jagen)';
+
+$lang['pressmatrix_api_url_angeln'] = 'Url (Angeln)';
+$lang['pressmatrix_api_organization_angeln'] = 'Organization (Angeln)';
+$lang['pressmatrix_api_publication_angeln'] = 'Publication (Angeln)';
+$lang['pressmatrix_api_token_angeln'] = 'Token (Angeln)';
+$lang['pressmatrix_api_filestore_angeln'] = 'Filestore (Angeln)';
 
 $lang['pressmatrix_video_title'] = 'Title';
 $lang['pressmatrix_video_description'] = 'Description';

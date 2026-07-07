@@ -2,7 +2,7 @@
 
 namespace services;
 
-require_once $_SERVER['DOCUMENT_ROOT'] .'/plugins/pressmatrix/model/VideoModel.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/plugins/pressmatrix/model/VideoModel.php';
 
 use model\VideoModel;
 use DateTime;
@@ -20,11 +20,22 @@ class PressmatrixService
     public function __construct()
     {
         $this->config = get_plugin_config('pressmatrix');
-        $this->url = $this->config['pressmatrix_api_url'];
-        $this->organization = $this->config['pressmatrix_api_organization'];
-        $this->publication = $this->config['pressmatrix_api_publication'];
-        $this->token = $this->config['pressmatrix_api_token'];
-        $this->filestore = $this->config['pressmatrix_api_filestore'];
+    }
+
+    private function switchApi(int $ref)
+    {
+        $object_1_id = get_data_by_field($ref, $this->config['pressmatrix_video_object_1']);
+        if(in_array(strtolower($object_1_id),['wuh','jww','djz'])){
+            $api = 'jagen';
+        }else{
+            $api = 'angeln';
+        }
+        $this->url = $this->config['pressmatrix_api_url_' . $api];
+        $this->organization = $this->config['pressmatrix_api_organization_' . $api];
+        $this->publication = $this->config['pressmatrix_api_publication_' . $api];
+        $this->token = $this->config['pressmatrix_api_token_' . $api];
+        $this->filestore = $this->config['pressmatrix_api_filestore_' . $api];
+        return $api;
     }
 
     /**
@@ -36,7 +47,7 @@ class PressmatrixService
 
         // VideoModel bauen & Daten holen
         $video = $this->buildVideoModel($ref);
-        if($video === null){
+        if ($video === null) {
             return null;
         }
 
@@ -67,7 +78,7 @@ class PressmatrixService
 
         if (isset($data['story']) && is_array($data['story'])) {
             // Hilfsfunktion um verschachtelte Arrays flachzuklopfen
-            $flatten = function($data, $prefix = 'story') use (&$flatten, &$postFields) {
+            $flatten = function ($data, $prefix = 'story') use (&$flatten, &$postFields) {
                 foreach ($data as $key => $value) {
                     $currentKey = $prefix . '[' . $key . ']';
                     if (is_array($value)) {
@@ -86,9 +97,11 @@ class PressmatrixService
             $mime_type = mime_content_type($local_img_path);
             $postFields['story[image]'] = new CURLFile($local_img_path, $mime_type, basename($local_img_path));
         }
-
-        $endpoint = $this->getEndpointUrl();
+        $this->switchApi($ref);
+        $api = $endpoint = $this->getEndpointUrl();
         $response = $this->sendRequest($endpoint, 'POST', $postFields);
+
+        print "<b>Api:</b> " . $api."<br>";
 
         if ($response) {
             $responseData = json_decode($response, true);
@@ -106,7 +119,7 @@ class PressmatrixService
     public function update(int $ref, string $story_id): bool
     {
         $video = $this->buildVideoModel($ref);
-        if($video === null){
+        if ($video === null) {
             return false;
         }
         $modelData = $video->getPressmatrix();
@@ -117,7 +130,8 @@ class PressmatrixService
                 $payload['story'][$key] = $value;
             }
         }
-
+        $api = $this->switchApi($ref);
+        print "<b>Api:</b> " . $api."<br>";
         $endpoint = $this->getEndpointUrl($story_id);
         $headers = ['Content-Type: application/json'];
 
@@ -129,8 +143,9 @@ class PressmatrixService
     /**
      * Veröffentlicht eine Story
      */
-    public function publish(string $story_id): bool
+    public function publish(string $story_id, int $ref): bool
     {
+        $api = $this->switchApi($ref);
         $endpoint = $this->getEndpointUrl($story_id, '/publish');
         $response = $this->sendRequest($endpoint, 'POST', '');
 
@@ -144,10 +159,10 @@ class PressmatrixService
      */
     private function buildVideoModel(int $ref): ?VideoModel
     {
-        $object_1_id = get_data_by_field($ref,$this->config['pressmatrix_video_object_1']);
-        $object_2_id = get_data_by_field($ref,$this->config['pressmatrix_video_object_2']);
+        $object_1_id = get_data_by_field($ref, $this->config['pressmatrix_video_object_1']);
+        $object_2_id = get_data_by_field($ref, $this->config['pressmatrix_video_object_2']);
 
-        if($object_1_id == ''){
+        if ($object_1_id == '') {
             return null;
         }
         $categories = $this->getCategories($ref);
@@ -163,7 +178,7 @@ class PressmatrixService
         $hlsurl = $this->config['pressmatrix_video_hlsurl'] . $mediakey_val . '.m3u8';
 
         $video = new VideoModel($this->config);
-        $video->setEvt(new DateTime(get_data_by_field($ref,$this->config['pressmatrix_video_evt'])));
+        $video->setEvt(new DateTime(get_data_by_field($ref, $this->config['pressmatrix_video_evt'])));
         $video->setGuid($ref);
         $video->setCategories($categories);
         $video->setObject('FUF');
@@ -183,9 +198,10 @@ class PressmatrixService
         return $video;
     }
 
-    private function getCategories(int $ref){
-        $object_1_id = get_data_by_field($ref,$this->config['pressmatrix_video_object_1']);
-        $object_2_id = get_data_by_field($ref,$this->config['pressmatrix_video_object_2']);
+    private function getCategories(int $ref)
+    {
+        $object_1_id = get_data_by_field($ref, $this->config['pressmatrix_video_object_1']);
+        $object_2_id = get_data_by_field($ref, $this->config['pressmatrix_video_object_2']);
 
         $mainCats = [
             'DJZ' => $this->config['pressmatrix_article_djz_main'],
@@ -198,7 +214,7 @@ class PressmatrixService
         ];
 
 
-        if($object_1_id != ''){
+        if ($object_1_id != '') {
             $cats[] = $mainCats[$object_1_id];
         }
         return $cats;

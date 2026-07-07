@@ -37,13 +37,13 @@ $config = get_plugin_config('pressmatrix');
         print "<br><b>Aktion: </b> Update<br>";
         $responseData = $pressmatrixService->update($ref,$pressmatrix_id);
         if($responseData === true){
-            print "Erfolgreich für Resource: " . $ref;
-            //$publish = $pressmatrixService->publish($pressmatrix_id);
-            /*if($publish === true){
-                print "LIVE";
+            print "Erfolgreich für Resource: " . $ref . "<br>";
+            $publish = $pressmatrixService->publish($pressmatrix_id,$ref);
+            if($publish === true){
+                print "<b>Status Pressmatrix:</b> LIVE<br>";
             }else{
-                print "Fehler";
-            }*/
+                print "<b>Status Pressmatrix:</b>Fehler<br>";
+            }
         }else{
             print "Fehlgeschlagen";
         }
@@ -53,14 +53,14 @@ $config = get_plugin_config('pressmatrix');
 
         $pressmatrixID = $pressmatrixService->create($ref);
         if($pressmatrixID !== null){
-            print "Erfolgreich";
+            print "Erfolgreich für Resource: " . $ref . "<br>";
             update_field($ref, $config['pressmatrix_video_pressmatrix'], $pressmatrixID);
-            //$publish = $pressmatrixService->publish($pressmatrixID);
-            /*if($publish === true){
-                print "LIVE";
+            $publish = $pressmatrixService->publish($pressmatrixID,$ref);
+            if($publish === true){
+                print "<b>Status Pressmatrix:</b> LIVE<br>";
             }else{
-                print "Fehler";
-            }*/
+                print "<b>Status Pressmatrix:</b>Fehler<br>";
+            }
         }else{
             print "Fehlgeschlagen";
         }

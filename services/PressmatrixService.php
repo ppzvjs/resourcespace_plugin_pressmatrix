@@ -57,11 +57,28 @@ class PressmatrixService
         $data = $video->getPressmatrix();
 
         // Payload flach aufbauen für multipart/form-data
-        $postFields = [];
+        /*$postFields = [];
         if (isset($data['story']) && is_array($data['story'])) {
             foreach ($data['story'] as $key => $value) {
                 $postFields["story[$key]"] = is_bool($value) ? ($value ? 'true' : 'false') : $value;
             }
+        }*/
+        $postFields = [];
+
+        if (isset($data['story']) && is_array($data['story'])) {
+            // Hilfsfunktion um verschachtelte Arrays flachzuklopfen
+            $flatten = function($data, $prefix = 'story') use (&$flatten, &$postFields) {
+                foreach ($data as $key => $value) {
+                    $currentKey = $prefix . '[' . $key . ']';
+                    if (is_array($value)) {
+                        $flatten($value, $currentKey);
+                    } else {
+                        $postFields[$currentKey] = is_bool($value) ? ($value ? 'true' : 'false') : $value;
+                    }
+                }
+            };
+
+            $flatten($data['story']);
         }
 
         // Lokales Bild anhängen falls vorhanden

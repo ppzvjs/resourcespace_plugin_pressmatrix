@@ -39,6 +39,9 @@ $lang['pressmatrix_video_free'] = 'Free Video';
 $lang['pressmatrix_video_price'] = 'Price in cent';
 $lang['pressmatrix_video_pressmatrix'] = 'Pressmatrix ID';
 $lang['pressmatrix_video_counter'] = 'Video Counter External';
+$lang['pressmatrix_video_external'] = 'External ID';
+$lang['pressmatrix_video_google'] = 'Google ID';
+$lang['pressmatrix_video_apple'] = 'Apple ID';
 
 $lang['pressmatrix_feed_file'] = 'Output File for for feed';
 

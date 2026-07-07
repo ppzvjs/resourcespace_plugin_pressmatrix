@@ -171,6 +171,27 @@ $page_def[] = config_add_single_select(
     true // required
 );
 
+$page_def[] = config_add_single_select(
+    'pressmatrix_video_external',
+    $lang['pressmatrix_video_external'],
+    $metafield_options,
+    true // required
+);
+
+$page_def[] = config_add_single_select(
+    'pressmatrix_video_google',
+    $lang['pressmatrix_video_google'],
+    $metafield_options,
+    true // required
+);
+
+$page_def[] = config_add_single_select(
+    'pressmatrix_video_apple',
+    $lang['pressmatrix_video_apple'],
+    $metafield_options,
+    true // required
+);
+
 $page_def[] = config_add_section_header($lang['pressmatrix_header_long_title'],$lang['pressmatrix_header_long_description']);
 $page_def[] = config_add_text_input('pressmatrix_longname_fuf', $lang['pressmatrix_longname_fuf']);
 $page_def[] = config_add_text_input('pressmatrix_longname_wuh', $lang['pressmatrix_longname_wuh']);

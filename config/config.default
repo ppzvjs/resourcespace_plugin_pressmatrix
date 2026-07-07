@@ -38,6 +38,9 @@ $pressmatrix_video_articles = 5;
 
 $pressmatrix_video_free = '';
 $pressmatrix_video_price = 0;
+$pressmatrix_video_external = 0;
+$pressmatrix_video_google = 0;
+$pressmatrix_video_apple = 0;
 
 $pressmatrix_longname_fuf = 'FISCH & FANG';
 $pressmatrix_longname_wuh = 'WILD UND HUND';

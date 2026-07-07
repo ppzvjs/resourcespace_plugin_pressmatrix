@@ -46,7 +46,7 @@ class PressmatrixService
         global $baseurl;
 
         // VideoModel bauen & Daten holen
-        $video = $this->buildVideoModel($ref);
+        $video = $this->buildVideoModel($ref,true);
         if ($video === null) {
             return null;
         }
@@ -106,7 +106,12 @@ class PressmatrixService
         if ($response) {
             $responseData = json_decode($response, true);
             if (isset($responseData['story']['id'])) {
+                update_field($ref, $this->config['pressmatrix_video_external'], $video->getExternalId());
+                update_field($ref, $this->config['pressmatrix_video_apple'], $video->getApple());
+                update_field($ref, $this->config['pressmatrix_video_google'], $video->getGoogle());
+                print "<b>External ID:</b> " . $video->getExternalId() . "<br>";
                 return $responseData['story']['id'];
+
             }
         }
 
@@ -137,6 +142,12 @@ class PressmatrixService
 
         $response = $this->sendRequest($endpoint, 'PATCH', json_encode($payload), $headers);
 
+        update_field($ref, $this->config['pressmatrix_video_external'], $video->getExternalId());
+        update_field($ref, $this->config['pressmatrix_video_apple'], $video->getApple());
+        update_field($ref, $this->config['pressmatrix_video_google'], $video->getGoogle());
+
+        print "<b>External ID:</b> " . $video->getExternalId() . "<br>";
+
         return $response !== null;
     }
 
@@ -152,12 +163,29 @@ class PressmatrixService
         return $response !== null;
     }
 
+    private function generateId(string $objekt){
+        $counterFile = "counter_" . $objekt . ".txt";
+        if (file_exists($counterFile)) {
+            $currentNumber = (int)file_get_contents($counterFile);
+        } else {
+            $currentNumber = 1;
+        }
+        if ($currentNumber > 500) {
+            die("Limit von 500 IDs für das Objekt '{$objekt}' wurde bereits erreicht!");
+        }
+        $nextId = "video." . $objekt . "." . str_pad($currentNumber, 3, "0", STR_PAD_LEFT);
+        $nextNumber = $currentNumber + 1;
+        file_put_contents($counterFile, $nextNumber);
+        return $nextId;
+    }
+
+
     ### Private Helper-Methoden zur Reduzierung von Code-Duplikaten ###
 
     /**
      * Zentralisiert das Laden der Felder und das Mapping auf das VideoModel
      */
-    private function buildVideoModel(int $ref): ?VideoModel
+    private function buildVideoModel(int $ref, bool $create = false): ?VideoModel
     {
         $object_1_id = get_data_by_field($ref, $this->config['pressmatrix_video_object_1']);
         $object_2_id = get_data_by_field($ref, $this->config['pressmatrix_video_object_2']);
@@ -165,7 +193,13 @@ class PressmatrixService
         if ($object_1_id == '') {
             return null;
         }
+        $externalID = get_data_by_field($ref,$this->config['pressmatrix_video_external']);
+        if($externalID == ''){
+            $externalID = $this->generateId(strtolower($object_1_id));
+        }
         $categories = $this->getCategories($ref);
+
+
 
         $date_field_id = $this->config['pressmatrix_video_evt'];
         $mediakey_field_id = $this->config['pressmatrix_video_mediakey'];
@@ -181,7 +215,7 @@ class PressmatrixService
         $video->setEvt(new DateTime(get_data_by_field($ref, $this->config['pressmatrix_video_evt'])));
         $video->setGuid($ref);
         $video->setCategories($categories);
-        $video->setObject('FUF');
+        $video->setObject(strtolower($object_1_id));
         $video->setDuration($this->config['pressmatrix_video_duration']);
         $video->setTitle(get_data_by_field($ref, $this->config['pressmatrix_video_title']) ?: "Resource " . $ref);
         $video->setDescription(get_data_by_field($ref, $this->config['pressmatrix_video_description']));
@@ -189,7 +223,9 @@ class PressmatrixService
 
         if ($free_val !== 'frei') {
             $video->setPrice($this->config['pressmatrix_video_price']);
-            $video->setExternalId(strtolower($object_1_id) . '.video.' . $ref);
+            $video->setExternalId($externalID);
+            $video->setApple($externalID);
+            $video->setGoogle($externalID);
         }
 
         $video->setEvt(new DateTime($date_val));

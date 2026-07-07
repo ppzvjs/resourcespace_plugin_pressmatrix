@@ -20,6 +20,9 @@ class VideoModel
 
     private string $external_id = '';
 
+    private string $google = '';
+    private string $apple = '';
+
     private string $duration;
 
     private string $object;
@@ -102,6 +105,28 @@ class VideoModel
         return $this->title;
     }
 
+    public function getGoogle(): string
+    {
+        return $this->google;
+    }
+
+    public function setGoogle(string $google): void
+    {
+        $this->google = $google;
+    }
+
+    public function getApple(): string
+    {
+        return $this->apple;
+    }
+
+    public function setApple(string $apple): void
+    {
+        $this->apple = $apple;
+    }
+
+
+
     public function setTitle(string $title): void
     {
         $this->title = $title;
@@ -178,7 +203,6 @@ class VideoModel
     }
 
 
-
     public function getEntry()
     {
 
@@ -224,6 +248,8 @@ class VideoModel
 
     public function getPressmatrix()
     {
+
+
         $video = '<video width="100%" controls>
   <source src="' . htmlspecialchars($this->getHls()) . '" type="application/x-mpegURL">
             Dein Browser unterstützt das Video-Tag nicht.
@@ -237,8 +263,8 @@ class VideoModel
                 // Pressmatrix will laut Doku Markdown, HTML/Video sollte aber klappen
                 "content" => '<h1>' . $this->getTitle() . '</h1><h4>' . $this->getObjecttitle() . ' | ' . $this->getDurationFormatted() . '</h4>' . $this->getDescription() . "<br><br>" . $video,
                 "external_id" => $this->getExternalId(),
-                "apple_product_identifier" => "video.wuh.001",
-                "google_product_identifier" => "video.wuh.001",
+                "apple_product_identifier" => $this->getApple(),
+                "google_product_identifier" => $this->getGoogle(),
                 "released_at" => $this->getEvt()->format(\DateTime::ATOM),
                 "cents" => 199,
                 "currency" => "EUR",

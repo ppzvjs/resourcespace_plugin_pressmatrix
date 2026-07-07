@@ -26,6 +26,8 @@ class VideoModel
 
     private string $objecttitle;
 
+    private array $categories;
+
     private $config;
 
     public function __construct($config)
@@ -165,6 +167,18 @@ class VideoModel
         $this->hls = $hls;
     }
 
+    public function getCategories(): array
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(array $categories): void
+    {
+        $this->categories = $categories;
+    }
+
+
+
     public function getEntry()
     {
 
@@ -219,18 +233,19 @@ class VideoModel
             'story' => [
                 "name" => htmlspecialchars($this->getTitle()),
                 "title" => htmlspecialchars($this->getTitle()),
-                "preview" => "Vorschau",
+                "preview" => $this->getDescription(),
                 // Pressmatrix will laut Doku Markdown, HTML/Video sollte aber klappen
                 "content" => '<h1>' . $this->getTitle() . '</h1><h4>' . $this->getObjecttitle() . ' | ' . $this->getDurationFormatted() . '</h4>' . $this->getDescription() . "<br><br>" . $video,
                 "external_id" => $this->getExternalId(),
                 "apple_product_identifier" => "video.wuh.001",
                 "google_product_identifier" => "video.wuh.001",
-                "released_at" => "2026-07-10T12:00:00Z",
+                "released_at" => $this->getEvt()->format(\DateTime::ATOM),
                 "cents" => 199,
                 "currency" => "EUR",
                 "language" => "de",
                 "subscription_required" => false,
-                "purchase_required" => false
+                "purchase_required" => false,
+                "category_ids" => $this->getCategories()
             ]
         ];
     }

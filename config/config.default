@@ -15,7 +15,8 @@ $pressmatrix_video_file = '1080p Output File';
 $pressmatrix_video_evt = 'EVT';
 $pressmatrix_video_duration = 'Duration';
 
-$pressmatrix_video_object = 'Object';
+$pressmatrix_video_object_1 = 'Object 1';
+$pressmatrix_video_object_2 = 'Object 2';
 $pressmatrix_video_active = 'Active';
 $pressmatrix_video_ready = 'Transcoding Success';
 
@@ -39,6 +40,7 @@ $pressmatrix_longname_jww = 'JAGEN WELTWEIT';
 $pressmatrix_longname_rf = 'RAUBFISCH';
 $pressmatrix_longname_nor = 'Norwegen';
 
+$pressmatrix_article_fuf_main = 0;
 $pressmatrix_article_fuf_2026 = 0;
 $pressmatrix_article_fuf_2025 = 0;
 $pressmatrix_article_fuf_2024 = 0;
@@ -47,6 +49,7 @@ $pressmatrix_article_fuf_2022 = 0;
 $pressmatrix_article_fuf_2021 = 0;
 $pressmatrix_article_fuf_2020 = 0;
 
+$pressmatrix_article_wuh_main = 0;
 $pressmatrix_article_wuh_2026 = 0;
 $pressmatrix_article_wuh_2025 = 0;
 $pressmatrix_article_wuh_2024 = 0;
@@ -55,6 +58,7 @@ $pressmatrix_article_wuh_2022 = 0;
 $pressmatrix_article_wuh_2021 = 0;
 $pressmatrix_article_wuh_2020 = 0;
 
+$pressmatrix_article_djz_main = 0;
 $pressmatrix_article_djz_2026 = 0;
 $pressmatrix_article_djz_2025 = 0;
 $pressmatrix_article_djz_2024 = 0;
@@ -63,6 +67,7 @@ $pressmatrix_article_djz_2022 = 0;
 $pressmatrix_article_djz_2021 = 0;
 $pressmatrix_article_djz_2020 = 0;
 
+$pressmatrix_article_jww_main = 0;
 $pressmatrix_article_jww_2026 = 0;
 $pressmatrix_article_jww_2025 = 0;
 $pressmatrix_article_jww_2024 = 0;
@@ -71,6 +76,7 @@ $pressmatrix_article_jww_2022 = 0;
 $pressmatrix_article_jww_2021 = 0;
 $pressmatrix_article_jww_2020 = 0;
 
+$pressmatrix_article_rf_main = 0;
 $pressmatrix_article_rf_2026 = 0;
 $pressmatrix_article_rf_2025 = 0;
 $pressmatrix_article_rf_2024 = 0;
@@ -79,6 +85,7 @@ $pressmatrix_article_rf_2022 = 0;
 $pressmatrix_article_rf_2021 = 0;
 $pressmatrix_article_rf_2020 = 0;
 
+$pressmatrix_article_nor_main = 0;
 $pressmatrix_article_nor_2026 = 0;
 $pressmatrix_article_nor_2025 = 0;
 $pressmatrix_article_nor_2024 = 0;

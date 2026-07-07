@@ -95,8 +95,14 @@ $page_def[] = config_add_single_select(
     true // required
 );
 $page_def[] = config_add_single_select(
-    'pressmatrix_video_object',
-    $lang['pressmatrix_video_object'],
+    'pressmatrix_video_object_1',
+    $lang['pressmatrix_video_object_1'],
+    $metafield_options,
+    true // required
+);
+$page_def[] = config_add_single_select(
+    'pressmatrix_video_object_2',
+    $lang['pressmatrix_video_object_2'],
     $metafield_options,
     true // required
 );
@@ -156,6 +162,7 @@ $page_def[] = config_add_section_header($lang['pressmatrix_header_article_catego
 
 $page_def[] = config_add_section_header($lang['pressmatrix_object_fuf'],'');
 
+$page_def[] = config_add_text_input('pressmatrix_article_fuf_main', $lang['pressmatrix_article_fuf_main']);
 $page_def[] = config_add_text_input('pressmatrix_article_fuf_2026', $lang['pressmatrix_article_fuf_2026']);
 $page_def[] = config_add_text_input('pressmatrix_article_fuf_2025', $lang['pressmatrix_article_fuf_2025']);
 $page_def[] = config_add_text_input('pressmatrix_article_fuf_2024', $lang['pressmatrix_article_fuf_2024']);
@@ -166,6 +173,7 @@ $page_def[] = config_add_text_input('pressmatrix_article_fuf_2020', $lang['press
 
 $page_def[] = config_add_section_header($lang['pressmatrix_object_nor'],'');
 
+$page_def[] = config_add_text_input('pressmatrix_article_nor_main', $lang['pressmatrix_article_nor_main']);
 $page_def[] = config_add_text_input('pressmatrix_article_nor_2026', $lang['pressmatrix_article_nor_2026']);
 $page_def[] = config_add_text_input('pressmatrix_article_nor_2025', $lang['pressmatrix_article_nor_2025']);
 $page_def[] = config_add_text_input('pressmatrix_article_nor_2024', $lang['pressmatrix_article_nor_2024']);
@@ -176,6 +184,7 @@ $page_def[] = config_add_text_input('pressmatrix_article_nor_2020', $lang['press
 
 $page_def[] = config_add_section_header($lang['pressmatrix_object_wuh'],'');
 
+$page_def[] = config_add_text_input('pressmatrix_article_wuh_main', $lang['pressmatrix_article_wuh_main']);
 $page_def[] = config_add_text_input('pressmatrix_article_wuh_2026', $lang['pressmatrix_article_wuh_2026']);
 $page_def[] = config_add_text_input('pressmatrix_article_wuh_2025', $lang['pressmatrix_article_wuh_2025']);
 $page_def[] = config_add_text_input('pressmatrix_article_wuh_2024', $lang['pressmatrix_article_wuh_2024']);
@@ -186,6 +195,7 @@ $page_def[] = config_add_text_input('pressmatrix_article_wuh_2020', $lang['press
 
 $page_def[] = config_add_section_header($lang['pressmatrix_object_djz'],'');
 
+$page_def[] = config_add_text_input('pressmatrix_article_djz_main', $lang['pressmatrix_article_djz_main']);
 $page_def[] = config_add_text_input('pressmatrix_article_djz_2026', $lang['pressmatrix_article_djz_2026']);
 $page_def[] = config_add_text_input('pressmatrix_article_djz_2025', $lang['pressmatrix_article_djz_2025']);
 $page_def[] = config_add_text_input('pressmatrix_article_djz_2024', $lang['pressmatrix_article_djz_2024']);
@@ -196,6 +206,7 @@ $page_def[] = config_add_text_input('pressmatrix_article_djz_2020', $lang['press
 
 $page_def[] = config_add_section_header($lang['pressmatrix_object_jww'],'');
 
+$page_def[] = config_add_text_input('pressmatrix_article_jww_main', $lang['pressmatrix_article_jww_main']);
 $page_def[] = config_add_text_input('pressmatrix_article_jww_2026', $lang['pressmatrix_article_jww_2026']);
 $page_def[] = config_add_text_input('pressmatrix_article_jww_2025', $lang['pressmatrix_article_jww_2025']);
 $page_def[] = config_add_text_input('pressmatrix_article_jww_2024', $lang['pressmatrix_article_jww_2024']);
@@ -206,6 +217,7 @@ $page_def[] = config_add_text_input('pressmatrix_article_jww_2020', $lang['press
 
 $page_def[] = config_add_section_header($lang['pressmatrix_object_rf'],'');
 
+$page_def[] = config_add_text_input('pressmatrix_article_rf_main', $lang['pressmatrix_article_rf_main']);
 $page_def[] = config_add_text_input('pressmatrix_article_rf_2026', $lang['pressmatrix_article_rf_2026']);
 $page_def[] = config_add_text_input('pressmatrix_article_rf_2025', $lang['pressmatrix_article_rf_2025']);
 $page_def[] = config_add_text_input('pressmatrix_article_rf_2024', $lang['pressmatrix_article_rf_2024']);

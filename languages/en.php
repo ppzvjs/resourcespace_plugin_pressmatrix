@@ -23,7 +23,8 @@ $lang['pressmatrix_video_description'] = 'Description';
 $lang['pressmatrix_video_file'] = '1080p Output File';
 $lang['pressmatrix_video_evt'] = 'EVT';
 $lang['pressmatrix_video_duration'] = 'Duration';
-$lang['pressmatrix_video_object'] = 'Object';
+$lang['pressmatrix_video_object_1'] = 'Object 1';
+$lang['pressmatrix_video_object_2'] = 'Object 2';
 $lang['pressmatrix_video_active'] = 'Active';
 $lang['pressmatrix_video_ready'] = 'Transcoding Success';
 $lang['pressmatrix_video_mediakey'] = 'Mediakey for HLS';
@@ -58,6 +59,7 @@ $lang['pressmatrix_object_rf']  = 'RF';
 $lang['pressmatrix_object_jww']  = 'JWW';
 $lang['pressmatrix_object_nor']  = 'NOR';
 
+$lang['pressmatrix_article_fuf_main'] = 'Objektkategorie';
 $lang['pressmatrix_article_fuf_2026'] = '2026';
 $lang['pressmatrix_article_fuf_2025'] = '2025';
 $lang['pressmatrix_article_fuf_2024'] = '2024';
@@ -66,6 +68,7 @@ $lang['pressmatrix_article_fuf_2022'] = '2022';
 $lang['pressmatrix_article_fuf_2021'] = '2021';
 $lang['pressmatrix_article_fuf_2020'] = '2020';
 
+$lang['pressmatrix_article_nor_main'] = 'Objektkategorie';
 $lang['pressmatrix_article_nor_2026'] = '2026';
 $lang['pressmatrix_article_nor_2025'] = '2025';
 $lang['pressmatrix_article_nor_2024'] = '2024';
@@ -74,6 +77,7 @@ $lang['pressmatrix_article_nor_2022'] = '2022';
 $lang['pressmatrix_article_nor_2021'] = '2021';
 $lang['pressmatrix_article_nor_2020'] = '2020';
 
+$lang['pressmatrix_article_wuh_main'] = 'Objektkategorie';
 $lang['pressmatrix_article_wuh_2026'] = '2026';
 $lang['pressmatrix_article_wuh_2025'] = '2025';
 $lang['pressmatrix_article_wuh_2024'] = '2024';
@@ -82,6 +86,7 @@ $lang['pressmatrix_article_wuh_2022'] = '2022';
 $lang['pressmatrix_article_wuh_2021'] = '2021';
 $lang['pressmatrix_article_wuh_2020'] = '2020';
 
+$lang['pressmatrix_article_djz_main'] = 'Objektkategorie';
 $lang['pressmatrix_article_djz_2026'] = '2026';
 $lang['pressmatrix_article_djz_2025'] = '2025';
 $lang['pressmatrix_article_djz_2024'] = '2024';
@@ -90,6 +95,7 @@ $lang['pressmatrix_article_djz_2022'] = '2022';
 $lang['pressmatrix_article_djz_2021'] = '2021';
 $lang['pressmatrix_article_djz_2020'] = '2020';
 
+$lang['pressmatrix_article_jww_main'] = 'Objektkategorie';
 $lang['pressmatrix_article_jww_2026'] = '2026';
 $lang['pressmatrix_article_jww_2025'] = '2025';
 $lang['pressmatrix_article_jww_2024'] = '2024';
@@ -98,6 +104,7 @@ $lang['pressmatrix_article_jww_2022'] = '2022';
 $lang['pressmatrix_article_jww_2021'] = '2021';
 $lang['pressmatrix_article_jww_2020'] = '2020';
 
+$lang['pressmatrix_article_rf_main'] = 'Objektkategorie';
 $lang['pressmatrix_article_rf_2026'] = '2026';
 $lang['pressmatrix_article_rf_2025'] = '2025';
 $lang['pressmatrix_article_rf_2024'] = '2024';

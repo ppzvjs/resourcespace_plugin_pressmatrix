@@ -171,7 +171,13 @@ class PressmatrixService
         $object_2_id = get_data_by_field($ref,$this->config['pressmatrix_video_object_2']);
 
         $mainCats = [
-            'DJZ' => $this->config['pressmatrix_article_djz_main']
+            'DJZ' => $this->config['pressmatrix_article_djz_main'],
+            'WUH' => $this->config['pressmatrix_article_wuh_main'],
+            'JWW' => $this->config['pressmatrix_article_jww_main'],
+            'FUF' => $this->config['pressmatrix_article_fuf_main'],
+            'RF' => $this->config['pressmatrix_article_rf_main'],
+            'NOR' => $this->config['pressmatrix_article_nor_main']
+
         ];
 
 

@@ -142,6 +142,8 @@ class PressmatrixService
 
         $response = $this->sendRequest($endpoint, 'PATCH', json_encode($payload), $headers);
 
+        print $response-
+
         update_field($ref, $this->config['pressmatrix_video_external'], $video->getExternalId());
         update_field($ref, $this->config['pressmatrix_video_apple'], $video->getApple());
         update_field($ref, $this->config['pressmatrix_video_google'], $video->getGoogle());
@@ -312,6 +314,7 @@ class PressmatrixService
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         if (curl_errno($ch)) {
+            var_dump($response);
             curl_close($ch);
             return null;
         }

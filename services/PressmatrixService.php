@@ -144,7 +144,6 @@ class PressmatrixService
 
         $response = $this->sendRequest($endpoint, 'PATCH', json_encode($payload), $headers);
 
-        print $response-
 
         update_field($ref, $this->config['pressmatrix_video_external'], $video->getExternalId());
         update_field($ref, $this->config['pressmatrix_video_apple'], $video->getApple());
@@ -202,6 +201,7 @@ class PressmatrixService
             print "Noch keine Externe ID";
             $externalID = $this->generateId(strtolower($object_1_id));
             print " Neue Externe ID " . $externalID . "<br>";
+
         }
         $categories = $this->getCategories($ref);
 
@@ -226,12 +226,13 @@ class PressmatrixService
         $video->setTitle(get_data_by_field($ref, $this->config['pressmatrix_video_title']) ?: "Resource " . $ref);
         $video->setDescription(get_data_by_field($ref, $this->config['pressmatrix_video_description']));
         $video->setLink("https://paulparey.de/?r=" . $ref);
-
+        $video->setFree($free_val);
+        $video->setExternalId($externalID);
+        $video->setApple($externalID);
+        $video->setGoogle($externalID);
         if ($free_val !== 'frei') {
             $video->setPrice($this->config['pressmatrix_video_price']);
-            $video->setExternalId($externalID);
-            $video->setApple($externalID);
-            $video->setGoogle($externalID);
+
         }
 
         $video->setEvt(new DateTime($date_val));

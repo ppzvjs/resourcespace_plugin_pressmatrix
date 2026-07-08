@@ -31,12 +31,26 @@ class VideoModel
 
     private array $categories;
 
+    private string $free;
+
     private $config;
 
     public function __construct($config)
     {
         $this->config = $config;
     }
+
+    public function getFree(): string
+    {
+        return $this->free;
+    }
+
+    public function setFree(string $free): void
+    {
+        $this->free = $free;
+    }
+
+
 
     public function getDuration(): string
     {
@@ -262,11 +276,11 @@ class VideoModel
                 "preview" => $this->getDescription(),
                 // Pressmatrix will laut Doku Markdown, HTML/Video sollte aber klappen
                 "content" => '<h1>' . $this->getTitle() . '</h1><h4>' . $this->getObjecttitle() . ' | ' . $this->getDurationFormatted() . '</h4>' . $this->getDescription() . "<br><br>" . $video,
-                "external_id" => $this->getExternalId(),
-                "apple_product_identifier" => $this->getApple(),
-                "google_product_identifier" => $this->getGoogle(),
+                "external_id" => $this->getFree() != 'frei' ? $this->getExternalId() : '',
+                "apple_product_identifier" => $this->getFree() != 'frei' ? $this->getApple() : '',
+                "google_product_identifier" => $this->getFree() != 'frei' ? $this->getGoogle() : '',
                 "released_at" => $this->getEvt()->format(\DateTime::ATOM),
-                "cents" => 199,
+                "cents" => $this->getFree() != 'frei' ? 199 : 0,
                 "currency" => "EUR",
                 "language" => "de",
                 "subscription_required" => false,

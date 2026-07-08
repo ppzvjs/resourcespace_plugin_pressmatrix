@@ -67,6 +67,8 @@ class PressmatrixService
         $video->setImage($img_url_web);
         $data = $video->getPressmatrix();
 
+        print_r($data);
+
         // Payload flach aufbauen für multipart/form-data
         /*$postFields = [];
         if (isset($data['story']) && is_array($data['story'])) {

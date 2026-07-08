@@ -314,6 +314,8 @@ class PressmatrixService
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
+        print "<b>StatusCode: </b>" . $httpCode . "<br>";
+
         if (curl_errno($ch)) {
             $errorMessage = curl_error($ch);
             $errorCode = curl_errno($ch);

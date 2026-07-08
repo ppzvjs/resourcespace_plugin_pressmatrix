@@ -67,7 +67,6 @@ class PressmatrixService
         $video->setImage($img_url_web);
         $data = $video->getPressmatrix();
 
-        print_r($data);
 
         // Payload flach aufbauen für multipart/form-data
         /*$postFields = [];
@@ -334,9 +333,6 @@ class PressmatrixService
 
         if ($httpCode >= 200 && $httpCode < 300) {
             return $response;
-        }else{
-            print "<b>Fehler: </b>";
-            var_dump($response);
         }
 
         return null;

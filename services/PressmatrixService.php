@@ -301,6 +301,8 @@ class PressmatrixService
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
+        print "<b>Params: </b> " . print_r($payload) . "<br>";
+
         // HTTP-Methode & Payload Handling
         if ($method === 'POST') {
             curl_setopt($ch, CURLOPT_POST, true);

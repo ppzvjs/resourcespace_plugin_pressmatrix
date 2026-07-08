@@ -329,6 +329,9 @@ class PressmatrixService
 
         if ($httpCode >= 200 && $httpCode < 300) {
             return $response;
+        }else{
+            print "<b>Fehler: </b>";
+            var_dump($response);
         }
 
         return null;

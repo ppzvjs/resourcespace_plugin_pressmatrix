@@ -301,7 +301,6 @@ class PressmatrixService
         curl_setopt($ch, CURLOPT_TIMEOUT, 30);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 
-        print "<b>Params: </b> " . print_r($payload) . "<br>";
 
         // HTTP-Methode & Payload Handling
         if ($method === 'POST') {
@@ -316,7 +315,10 @@ class PressmatrixService
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 
         if (curl_errno($ch)) {
-            var_dump($response);
+            $errorMessage = curl_error($ch);
+            $errorCode = curl_errno($ch);
+            print "<b>Fehlermeldung: </b>" . $errorMessage . "<br>";
+            print "<b>Fehlercode: </b>" . $errorCode . "<br>";
             curl_close($ch);
             return null;
         }

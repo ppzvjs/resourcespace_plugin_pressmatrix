@@ -197,7 +197,9 @@ class PressmatrixService
         }
         $externalID = get_data_by_field($ref,$this->config['pressmatrix_video_external']);
         if($externalID == ''){
+            print "Noch keine Externe ID";
             $externalID = $this->generateId(strtolower($object_1_id));
+            print " Neue Externe ID " . $externalID . "<br>";
         }
         $categories = $this->getCategories($ref);
 

@@ -130,6 +130,8 @@ class PressmatrixService
         }
         $modelData = $video->getPressmatrix();
 
+        file_put_contents('debug.txt',json_encode($modelData));
+
         $payload = ['story' => []];
         if (isset($modelData['story']) && is_array($modelData['story'])) {
             foreach ($modelData['story'] as $key => $value) {
@@ -242,6 +244,10 @@ class PressmatrixService
 
     private function getCategories(int $ref)
     {
+
+        $evt = get_data_by_field($ref,$this->config['pressmatrix_video_evt']);
+        $year = explode("-",$evt)[0];
+
         $object_1_id = get_data_by_field($ref, $this->config['pressmatrix_video_object_1']);
         $object_2_id = get_data_by_field($ref, $this->config['pressmatrix_video_object_2']);
 
@@ -257,7 +263,14 @@ class PressmatrixService
 
 
         if ($object_1_id != '') {
-            $cats[] = $mainCats[$object_1_id];
+            $cats[] = intval($mainCats[$object_1_id]);
+            $cats[] = intval($this->config['pressmatrix_article_' . strtolower($object_1_id) . "_" . $year]);
+
+        }
+        if ($object_2_id != '') {
+            $cats[] = intval($mainCats[$object_2_id]);
+            $cats[] = intval($this->config['pressmatrix_article_' . strtolower($object_1_id) . "_" . $year]);
+
         }
         return $cats;
     }

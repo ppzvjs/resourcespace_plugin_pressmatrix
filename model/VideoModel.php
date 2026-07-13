@@ -285,7 +285,7 @@ class VideoModel
                 "language" => "de",
                 "subscription_required" => false,
                 "purchase_required" => false,
-                "category_ids" => $this->getCategories()
+                "article_category_ids" => $this->getCategories()
             ]
         ];
     }

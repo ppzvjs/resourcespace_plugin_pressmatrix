@@ -269,7 +269,7 @@ class PressmatrixService
         }
         if ($object_2_id != '') {
             $cats[] = intval($mainCats[$object_2_id]);
-            $cats[] = intval($this->config['pressmatrix_article_' . strtolower($object_1_id) . "_" . $year]);
+            $cats[] = intval($this->config['pressmatrix_article_' . strtolower($object_2_id) . "_" . $year]);
 
         }
         print "Cats: ";

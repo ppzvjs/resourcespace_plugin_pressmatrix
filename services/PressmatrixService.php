@@ -81,10 +81,23 @@ class PressmatrixService
             // Hilfsfunktion um verschachtelte Arrays flachzuklopfen
             $flatten = function ($data, $prefix = 'story') use (&$flatten, &$postFields) {
                 foreach ($data as $key => $value) {
-                    $currentKey = $prefix . '[' . $key . ']';
                     if (is_array($value)) {
-                        $flatten($value, $currentKey);
+                        // Prüfen, ob es ein sequentielles/nummeriertes Array ist (wie [8219, 8246])
+                        $isNumericArray = array_keys($value) === range(0, count($value) - 1);
+
+                        if ($isNumericArray) {
+                            // Für jede ID einen eigenen Eintrag mit leeren Klammern '[]' erzeugen
+                            foreach ($value as $subValue) {
+                                $currentKey = $prefix . '[' . $key . '][]';
+                                $postFields[$currentKey] = is_bool($subValue) ? ($subValue ? 'true' : 'false') : $subValue;
+                            }
+                        } else {
+                            // Wenn es ein assoziatives Array wäre, normal weiter verschachteln
+                            $currentKey = $prefix . '[' . $key . ']';
+                            $flatten($value, $currentKey);
+                        }
                     } else {
+                        $currentKey = $prefix . '[' . $key . ']';
                         $postFields[$currentKey] = is_bool($value) ? ($value ? 'true' : 'false') : $value;
                     }
                 }
@@ -343,6 +356,11 @@ class PressmatrixService
             print "<b>Fehlercode: </b>" . $errorCode . "<br>";
             curl_close($ch);
             return null;
+        }
+
+        if($httpCode == 400){
+            var_dump($payload);
+            var_dump($response);
         }
 
         curl_close($ch);

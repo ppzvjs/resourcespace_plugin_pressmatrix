@@ -272,6 +272,9 @@ class PressmatrixService
             $cats[] = intval($this->config['pressmatrix_article_' . strtolower($object_1_id) . "_" . $year]);
 
         }
+        print "Cats: ";
+        print_r($cats);
+        print "<br>";
         return $cats;
     }
 

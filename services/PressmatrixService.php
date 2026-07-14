@@ -2,7 +2,7 @@
 
 namespace services;
 
-require_once $_SERVER['DOCUMENT_ROOT'] . '/plugins/pressmatrix/model/VideoModel.php';
+require_once "../../model/VideoModel.php";
 
 use model\VideoModel;
 use DateTime;
@@ -41,7 +41,7 @@ class PressmatrixService
     /**
      * Erstellt eine neue Story (Multipart/Form-Data inkl. Bild-Upload)
      */
-    public function create(int $ref): ?string
+    public function create(int $ref, bool $output = true): ?string
     {
         global $baseurl;
 
@@ -115,7 +115,9 @@ class PressmatrixService
         $api = $endpoint = $this->getEndpointUrl();
         $response = $this->sendRequest($endpoint, 'POST', $postFields);
 
-        print "<b>Api:</b> " . $api."<br>";
+        if($output === true) {
+            print "<b>Api:</b> " . $api . "<br>";
+        }
 
         if ($response) {
             $responseData = json_decode($response, true);
@@ -123,7 +125,11 @@ class PressmatrixService
                 update_field($ref, $this->config['pressmatrix_video_external'], $video->getExternalId());
                 update_field($ref, $this->config['pressmatrix_video_apple'], $video->getApple());
                 update_field($ref, $this->config['pressmatrix_video_google'], $video->getGoogle());
-                print "<b>External ID:</b> " . $video->getExternalId() . "<br>";
+                update_field($ref,$this->config['pressmatrix_video_pressmatrix'],$responseData['story']['id']);
+                if($output === true) {
+                    print "<b>External ID:</b> " . $video->getExternalId() . "<br>";
+
+                }
                 return $responseData['story']['id'];
 
             }
@@ -135,7 +141,7 @@ class PressmatrixService
     /**
      * Aktualisiert eine bestehende Story via PATCH (JSON)
      */
-    public function update(int $ref, string $story_id): bool
+    public function update(int $ref, string $story_id, bool $output = true): bool
     {
         $video = $this->buildVideoModel($ref);
         if ($video === null) {
@@ -153,7 +159,9 @@ class PressmatrixService
             }
         }
         $api = $this->switchApi($ref);
-        print "<b>Api:</b> " . $api."<br>";
+        if($output === true) {
+            print "<b>Api:</b> " . $api . "<br>";
+        }
         $endpoint = $this->getEndpointUrl($story_id);
         $headers = ['Content-Type: application/json'];
 
@@ -164,7 +172,9 @@ class PressmatrixService
         update_field($ref, $this->config['pressmatrix_video_apple'], $video->getApple());
         update_field($ref, $this->config['pressmatrix_video_google'], $video->getGoogle());
 
-        print "<b>External ID:</b> " . $video->getExternalId() . "<br>";
+        if($output === true) {
+            print "<b>External ID:</b> " . $video->getExternalId() . "<br>";
+        }
 
         return $response !== null;
     }
@@ -213,9 +223,9 @@ class PressmatrixService
         }
         $externalID = get_data_by_field($ref,$this->config['pressmatrix_video_external']);
         if($externalID == ''){
-            print "Noch keine Externe ID";
+            //print "Noch keine Externe ID";
             $externalID = $this->generateId(strtolower($object_1_id));
-            print " Neue Externe ID " . $externalID . "<br>";
+            //print " Neue Externe ID " . $externalID . "<br>";
 
         }
         $categories = $this->getCategories($ref);
@@ -286,9 +296,6 @@ class PressmatrixService
             $cats[] = intval($this->config['pressmatrix_article_' . strtolower($object_2_id) . "_" . $year]);
 
         }
-        print "Cats: ";
-        print_r($cats);
-        print "<br>";
         return $cats;
     }
 
@@ -347,8 +354,6 @@ class PressmatrixService
 
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-
-        print "<b>StatusCode: </b>" . $httpCode . "<br>";
 
         if (curl_errno($ch)) {
             $errorMessage = curl_error($ch);

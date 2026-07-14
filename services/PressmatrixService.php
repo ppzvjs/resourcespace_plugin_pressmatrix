@@ -150,7 +150,7 @@ class PressmatrixService
         $video->setRef($ref);
         $modelData = $video->getPressmatrix();
 
-        file_put_contents('debug.txt',json_encode($modelData));
+       // file_put_contents('debug.txt',json_encode($modelData));
 
         $payload = ['story' => []];
         if (isset($modelData['story']) && is_array($modelData['story'])) {
@@ -192,7 +192,7 @@ class PressmatrixService
     }
 
     private function generateId(string $objekt){
-        $counterFile = "counter_" . $objekt . ".txt";
+        $counterFile = "../counter/counter_" . $objekt . ".txt";
         if (file_exists($counterFile)) {
             $currentNumber = (int)file_get_contents($counterFile);
         } else {

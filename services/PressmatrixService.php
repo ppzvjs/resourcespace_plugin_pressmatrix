@@ -63,7 +63,7 @@ class PressmatrixService
             $local_img_path = dirname(__DIR__, 3) . '/filestore' . $clean_filestore_part;
             $img_url_web = $baseurl . '/filestore' . $filestore_part;
         }
-
+        $video->setRef($ref);
         $video->setImage($img_url_web);
         $data = $video->getPressmatrix();
 
@@ -141,6 +141,7 @@ class PressmatrixService
         if ($video === null) {
             return false;
         }
+        $video->setRef($ref);
         $modelData = $video->getPressmatrix();
 
         file_put_contents('debug.txt',json_encode($modelData));

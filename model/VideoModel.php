@@ -33,12 +33,25 @@ class VideoModel
 
     private string $free;
 
+    private int $ref;
+
     private $config;
 
     public function __construct($config)
     {
         $this->config = $config;
     }
+
+    public function getRef(): int
+    {
+        return $this->ref;
+    }
+
+    public function setRef(int $ref): void
+    {
+        $this->ref = $ref;
+    }
+
 
     public function getFree(): string
     {
@@ -49,7 +62,6 @@ class VideoModel
     {
         $this->free = $free;
     }
-
 
 
     public function getDuration(): string
@@ -262,20 +274,13 @@ class VideoModel
 
     public function getPressmatrix()
     {
-
-
-        $video = '<video width="100%" controls>
-  <source src="' . htmlspecialchars($this->getHls()) . '" type="application/x-mpegURL">
-            Dein Browser unterstützt das Video-Tag nicht.
-</video>';
-
         return [
             'story' => [
                 "name" => htmlspecialchars($this->getTitle()),
                 "title" => htmlspecialchars($this->getTitle()),
                 "preview" => $this->getDescription(),
                 // Pressmatrix will laut Doku Markdown, HTML/Video sollte aber klappen
-                "content" => '<h1>' . $this->getTitle() . '</h1><h4>' . $this->getObjecttitle() . ' | ' . $this->getDurationFormatted() . '</h4>' . $this->getDescription() . "<br><br>" . $video,
+                "content" => $this->buildVideo(),
                 "external_id" => $this->getFree() != 'frei' ? $this->getExternalId() : '',
                 "apple_product_identifier" => $this->getFree() != 'frei' ? $this->getApple() : '',
                 "google_product_identifier" => $this->getFree() != 'frei' ? $this->getGoogle() : '',
@@ -290,19 +295,47 @@ class VideoModel
         ];
     }
 
+    private function buildVideo()
+    {
+        $content = '<h1>' . $this->getTitle() . '</h1>';
+        $content .= '<h4>' . $this->getObjecttitle() . ' | ' . $this->getDurationFormatted() . '</h4>';
+        $content .= '<p>' . $this->getDescription() . '</p>';
+        $content .= '<div class="video-wrapper">
+                      <video id="' . $this->getRef() . '" controls crossorigin="anonymous">
+                            Dein Browser unterstützt das Video-Tag nicht.
+                      </video>
+                    </div>';
+        $content .= '<script src = "https://cdn.jsdelivr.net/npm/hls.js@1" ></script >';
+
+        $content .= '<script >
+                        document . addEventListener("DOMContentLoaded", function () {
+                            const video = document . getElementById(\'' . $this->getRef() . '\');
+                            const videoSrc = \'' . htmlspecialchars($this->getHls()) .'\';
+                            if (Hls . isSupported()) {
+                                const hls = new Hls();
+                                hls . loadSource(videoSrc);
+                                hls . attachMedia(video);
+                            } else if (video . canPlayType(\'application/vnd.apple.mpegurl\')) {
+                                video . src = videoSrc;
+                            }
+                        });
+                    </script >';
+        return $content;
+    }
+
 
     /*
     public function getEntry(){
-        $data = '<item>';
-        $data .= '<title>' . htmlspecialchars($this->getTitle()) . '</title>';
-        $data .= '<description><![CDATA[' . $this->getDescription() . ']]></description>';
-        $data .= '<link>' . htmlspecialchars($this->getLink()) . '</link>';
-        $data .= '<pubDate>' . $this->getEvt()->format('r') . '</pubDate>';
-        $data .= '<guid isPermaLink="false">' . $this->getGuid() . '</guid>';
-        //$data .= '<enclosure url="' . $this->getImage() .'"/>';
-        $data .= '<enclosure url="https://www.paulparey.de/wp-content/uploads/2018/07/header-logo.jpg" />';
-        //$data .= '<addfields:image><![CDATA[<img src="https://www.paulparey.de/wp-content/uploads/2018/07/header-logo.jpg" />]]></addfields:limage>';
-        $data .= '</item>';
+        $data = '<item > ';
+        $data .= '<title > ' . htmlspecialchars($this->getTitle()) . '</title > ';
+        $data .= '<description ><![CDATA[' . $this->getDescription() . ']] ></description > ';
+        $data .= '<link > ' . htmlspecialchars($this->getLink()) . '</link > ';
+        $data .= '<pubDate > ' . $this->getEvt()->format('r') . ' </pubDate > ';
+        $data .= '<guid isPermaLink = "false" > ' . $this->getGuid() . '</guid > ';
+        //$data .= '<enclosure url = "' . $this->getImage() .'" />';
+        $data .= '<enclosure url = "https://www.paulparey.de/wp-content/uploads/2018/07/header-logo.jpg" />';
+        //$data .= '<addfields:image ><![CDATA[<img src = "https://www.paulparey.de/wp-content/uploads/2018/07/header-logo.jpg" />]]></addfields:limage > ';
+        $data .= '</item > ';
         return $data;
     }*/
 }

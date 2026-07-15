@@ -38,6 +38,16 @@ class PressmatrixService
         return $api;
     }
 
+    private function switchApiByName(string $api)
+    {
+        $this->url = $this->config['pressmatrix_api_url_' . $api];
+        $this->organization = $this->config['pressmatrix_api_organization_' . $api];
+        $this->publication = $this->config['pressmatrix_api_publication_' . $api];
+        $this->token = $this->config['pressmatrix_api_token_' . $api];
+        $this->filestore = $this->config['pressmatrix_api_filestore_' . $api];
+        return $api;
+    }
+
     /**
      * Erstellt eine neue Story (Multipart/Form-Data inkl. Bild-Upload)
      */
@@ -376,5 +386,64 @@ class PressmatrixService
         }
 
         return null;
+    }
+
+    private function sendRequestGet(string $endpoint): ?string
+    {
+        $ch = curl_init($endpoint);
+
+        $headers = [
+            'Accept: application/json',
+            'Authorization: Token ' . $this->token
+        ];
+
+
+        // Standard-Optionen
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+
+
+        $response = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        if (curl_errno($ch)) {
+            $errorMessage = curl_error($ch);
+            $errorCode = curl_errno($ch);
+            print "<b>Fehlermeldung: </b>" . $errorMessage . "<br>";
+            print "<b>Fehlercode: </b>" . $errorCode . "<br>";
+            curl_close($ch);
+            return null;
+        }
+
+
+        curl_close($ch);
+
+        if ($httpCode >= 200 && $httpCode < 300) {
+            return $response;
+        }
+
+        return null;
+    }
+
+    public function listArticles(string $api){
+
+        $this->switchApiByName($api);
+        $endpoint = $this->getEndpointUrl();
+        print $api;
+        $response = $this->sendRequestGet($endpoint);
+        $data = json_decode($response);
+        var_dump($data);
+        die();
+
+
+        /*
+        curl --location 'https://editor.pressmatrix.com/api/v2/importer/organizations/{organization_id}/publications/{publication_id}/stories?search=Example&page=1&per=20' \
+  --header 'Accept: application/json' \
+  --header 'Authorization: Token {TOKEN_GENERATED_BY_PMX}'
+        */
+
     }
 }

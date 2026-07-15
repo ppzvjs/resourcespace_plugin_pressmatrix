@@ -323,6 +323,65 @@ class VideoModel
         return $content;
     }
 
+    private function buildVideoDev()
+    {
+        $ref = $this->getRef();
+        $hlsUrl = $this->getHls();
+
+        $content = '<h1>' . $this->getTitle() . '</h1>';
+        $content .= '<h4>' . $this->getObjecttitle() . ' | ' . $this->getDurationFormatted() . '</h4>';
+        $content .= '<p>' . $this->getDescription() . '</p>';
+
+        // Das Video-Tag bleibt sauber und ohne internes <source>-Tag, damit HLS.js ungestört arbeiten kann
+        $content .= '<div class="video-wrapper">
+                  <video id="' . htmlspecialchars($ref, ENT_QUOTES, 'UTF-8') . '" controls crossorigin="anonymous">
+                        Dein Browser unterstützt das Video-Tag nicht.
+                  </video>
+                </div>';
+
+        $content .= '<script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.0/dist/hls.min.js"></script>';
+
+        $content .= '<script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                        // json_encode macht hieraus garantiert einen validen String, z.B. "85" statt 85
+                        const videoId = ' . json_encode((string)$ref) . ';
+                        const videoSrc = ' . json_encode($hlsUrl) . ';
+                        
+                        const video = document.getElementById(videoId);
+                        
+                        if (!video) {
+                            console.error("Video-Element mit ID " + videoId + " wurde nicht gefunden.");
+                            return;
+                        }
+
+                        // 1. HLS-Initialisierung
+                        if (Hls.isSupported()) {
+                            const hls = new Hls();
+                            hls.loadSource(videoSrc);
+                            hls.attachMedia(video);
+                        } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+                            video.src = videoSrc;
+                        }
+
+                        // 2. Vollbild-Support bei Doppelklick
+                        video.addEventListener("dblclick", function() {
+                            if (video.requestFullscreen) {
+                                video.requestFullscreen();
+                            } else if (video.webkitRequestFullscreen) { /* Safari */
+                                video.webkitRequestFullscreen();
+                            } else if (video.msRequestFullscreen) { /* IE11 */
+                                video.msRequestFullscreen();
+                            } else if (video.webkitEnterFullscreen) { /* iOS Safari */
+                                video.webkitEnterFullscreen();
+                            }
+                        });
+                    });
+                </script>';
+        return $content;
+    }
+
+
+
 
     /*
     public function getEntry(){

@@ -2,7 +2,8 @@
 
 namespace services;
 
-require_once "../../model/VideoModel.php";
+//require_once "../../model/VideoModel.php";
+require_once __DIR__ . '/../model/VideoModel.php';
 
 use model\VideoModel;
 use DateTime;

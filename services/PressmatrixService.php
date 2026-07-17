@@ -258,7 +258,7 @@ class PressmatrixService
         $video->setGuid($ref);
         $video->setCategories($categories);
         $video->setObject(strtolower($object_1_id));
-        $video->setDuration($this->config['pressmatrix_video_duration']);
+        $video->setDuration(get_data_by_field($ref,$this->config['pressmatrix_video_duration']));
         $video->setTitle(get_data_by_field($ref, $this->config['pressmatrix_video_title']) ?: "Resource " . $ref);
         $video->setDescription(get_data_by_field($ref, $this->config['pressmatrix_video_description']));
         $video->setLink("https://paulparey.de/?r=" . $ref);

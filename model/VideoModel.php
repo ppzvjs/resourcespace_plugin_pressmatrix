@@ -299,7 +299,7 @@ class VideoModel
     {
         $content = '<h1>' . $this->getTitle() . '</h1>';
         $content .= '<h4>' . $this->getObjecttitle() . ' | ' . $this->getDurationFormatted() . '</h4>';
-        $content .= '<p>' . $this->getDescription() . '</p>';
+        $content .= '<p>' . strip_tags($this->getDescription()) . '</p>';
         $content .= '<div class="video-wrapper">
                       <video id="' . $this->getRef() . '" controls crossorigin="anonymous">
                             Dein Browser unterstützt das Video-Tag nicht.
